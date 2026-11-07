@@ -24,7 +24,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SITE = ROOT / "_site"
 
 INCLUDE = ["app/**/*.py", "src/cpsim/**/*.py", "data/samples/*", "data/public/*.json",
-           "config/*.example.toml"]
+           "config/*.example.toml", "docs/metodologia.md", ".streamlit/config.toml"]
 # Nunca publicar (defesa extra além do INCLUDE): config local com nomes reais.
 NEVER = (".local.toml",)
 
@@ -33,7 +33,7 @@ NEVER = (".local.toml",)
 STLITE_REQUIREMENTS = ["pandas", "openpyxl", "pypdf==6.21.4"]
 
 ENTRYPOINT = "app/app.py"
-READY_MARKER = "Diagnóstico de leitura"  # texto que indica que o app desenhou a 1ª tela
+READY_MARKER = "Simulador de trocas"  # texto que indica que o app desenhou a 1ª tela
 
 
 def _clean(d: Path) -> None:

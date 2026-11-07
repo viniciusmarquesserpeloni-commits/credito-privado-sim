@@ -58,6 +58,12 @@ colunas internas também vêm do config local).
   repositório é só a reserva. O app mostra a data da coleta e alerta se > 3 dias úteis.
 - Premissa "amortização no vencimento" tem erro conhecido (ver `docs/FASE2_RELATORIO.md`).
 
+## Interface (Fase 3)
+`app/app.py` (navegação) + `app/ui.py` (estado em `st.session_state`, parâmetros persistentes
+`p_*`) + `app/pages/1_dados.py` … `5_metodologia.py`. Tabelas de saída SEMPRE via
+`cpsim.report` no modo ativo; textos fixos que citam o Runflow passam por `ui.L()`. Testes do app
+em `tests/test_app.py` (AppTest), incluindo o modo cliente.
+
 ## Stack
 - Python ≥ 3.12 (CI testa 3.12 e 3.13). Núcleo em `src/cpsim` com funções puras, sem Streamlit,
   tipado (dataclasses), testado com pytest.

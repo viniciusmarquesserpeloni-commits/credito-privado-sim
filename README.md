@@ -22,8 +22,18 @@ e custos.
 
 ## Estado
 
-**Fase 2 (motor de troca)** concluída — relatórios em [`docs/`](docs/) (`FASE0_` a `FASE2_RELATORIO.md`).
-Próxima: interface completa (Fase 3).
+**MVP (Fases 0 a 3)** concluído — relatórios em [`docs/`](docs/) (`FASE0_` a `FASE3_RELATORIO.md`).
+
+## Como usar
+
+1. **Dados:** envie o Mapa de Posições (PDF) e o Runflow (XLSX), ou use as amostras fictícias.
+   Se quiser ver as colunas internas com os nomes reais, envie também o seu
+   `runflow_columns.local.toml` (fica só na memória).
+2. **Parâmetros:** perfil do investidor, cenário, filtros, custos e limiares; modo interno ou cliente.
+3. **Carteira:** confira a taxa de mercado e a duration estimadas de cada posição e, se precisar,
+   informe a amortização, a duration ou a taxa.
+4. **Trocas:** candidatos por posição, justificativa e export Excel no modo ativo.
+5. **Metodologia:** como os números são calculados e as limitações.
 
 ## Rodar localmente
 

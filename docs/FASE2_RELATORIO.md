@@ -104,9 +104,25 @@ amortização informada.
   Um teste lê o Excel exportado célula a célula e confere que não sobrou nada disso.
 - **Interno:** inclui lastro e as colunas internas, com os rótulos do config.
 
+## Ajustes aprovados ao fim da fase
+
+- **Checagem por lotes:** lotes do mesmo código precisam dar a mesma taxa de mercado. Divergência
+  acima de 10 bps gera o alerta "verificar PU Curva/fluxo".
+- **Spread estimado da mesa** (só modo interno): taxa estimada − Taxa de Compra do mesmo código
+  (em %CDI, multiplicado pelo CDI esperado). Acima de 150 bps, a posição é marcada para revisão.
+  Só é calculado quando a taxa é estimada pelo PU; no fallback ela seria a própria Taxa de
+  Compra. O valor nunca aparece no modo cliente nem entra no ranking. Hoje só marca valores
+  **positivos** acima de 150 bps, conforme especificado.
+- **Dados públicos sem commit:** `update-data.yml` roda nos dias úteis às 20h de Brasília, por
+  disparo manual e chamado pelo `pages.yml` a cada push. Ele coleta, roda os testes, monta o
+  site e publica no Pages com os JSON novos; a `main` não recebe commit. Os JSON ficaram enxutos
+  (de 145 KB para 9 KB): CDI e meta Selic dos últimos 45 dias, IPCA dos últimos 13 meses, Focus
+  da última data e só as NTN-B com juros semestrais da data-base mais recente. A cópia em
+  `data/public/` serve de reserva para uso local, testes e o caso de a coleta falhar.
+- **Atualidade:** o app mostra a data da coleta e alerta quando algum arquivo passa de 3 dias
+  úteis ou está ausente.
+
 ## Pendências
 
-1. **Workflow `update-data.yml`** (coleta agendada, dias úteis às 20h, que faz commit e push dos
-   dados públicos na `main` pelo GitHub Actions). A gravação dele foi interrompida na sua mudança
-   de escopo, e não recriei sem confirmar com você.
-2. Interface (Fase 3): telas, campos de sobrescrita na Carteira e export.
+1. Interface (Fase 3): telas, campos de sobrescrita na Carteira e export. Se a leitura do PDF no
+   navegador ficar lenta, extrair o texto com pdf.js.

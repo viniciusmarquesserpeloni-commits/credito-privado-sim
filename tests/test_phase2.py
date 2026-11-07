@@ -163,11 +163,51 @@ def test_fallback_para_taxa_do_runflow(mapa, runflow):
     assert "recompra tende a ser pior" in e.market_rate.note
 
 
-def test_dispersao_entre_lotes(mapa, runflow):
+def _xalf_com_divergencia(mapa, fator: float):
     pos = copy.deepcopy(next(p for p in mapa.positions() if p.code == "XALF12"))
-    pos.lots[0].pu_curve *= 1.02
-    e = enrich_position(pos, VAL, SC, runflow.by_code()["XALF12"])
-    assert any("lotes do mesmo papel" in a for a in e.alerts)
+    pos.lots[0].pu_curve *= fator  # PU Curva de um lote "errado" muda a taxa dele
+    return pos
+
+
+def test_checagem_por_lotes_limite_10bps(mapa, runflow):
+    cand = runflow.by_code()["XALF12"]
+    alto = enrich_position(_xalf_com_divergencia(mapa, 1.02), VAL, SC, cand)
+    assert (max(alto.lot_rates) - min(alto.lot_rates)) > 0.0010
+    assert any("verificar PU Curva/fluxo" in a for a in alto.alerts)
+    baixo = enrich_position(_xalf_com_divergencia(mapa, 1.002), VAL, SC, cand)
+    assert 0 < (max(baixo.lot_rates) - min(baixo.lot_rates)) < 0.0010
+    assert not any("verificar PU Curva/fluxo" in a for a in baixo.alerts)
+    ok = enrich_position(next(p for p in mapa.positions() if p.code == "XALF12"), VAL, SC, cand)
+    assert not any("verificar" in a for a in ok.alerts)
+
+
+def test_spread_estimado_da_mesa(enriched, runflow):
+    by = runflow.by_code()
+    alf = enriched["XALF12"]  # taxa estimada 6,90% vs Taxa de Compra 7,12%
+    assert alf.desk_spread == pytest.approx(TAXA_MERCADO["XALF12"] - by["XALF12"].rate.value,
+                                            abs=5e-6)
+    assert not alf.review
+    dl = enriched["XDEL14"]  # %CDI: diferença × CDI
+    assert dl.desk_spread == pytest.approx((TAXA_MERCADO["XDEL14"] - by["XDEL14"].rate.value)
+                                           * SAMPLE_CDI, abs=5e-6)
+    assert enriched["XHOM36"].desk_spread is None  # fora do Runflow
+    assert enriched["CDBX0001"].desk_spread is None
+
+
+def test_spread_da_mesa_acima_de_150bps_marca_revisao(mapa, runflow):
+    pos = next(p for p in mapa.positions() if p.code == "XALF12")
+    cand = copy.deepcopy(runflow.by_code()["XALF12"])
+    cand.rate = Rate(Indexer.IPCA, TAXA_MERCADO["XALF12"] - 0.0160)
+    e = enrich_position(pos, VAL, SC, cand)
+    assert e.desk_spread == pytest.approx(0.0160, abs=5e-6) and e.review
+    cand.rate = Rate(Indexer.IPCA, TAXA_MERCADO["XALF12"] - 0.0140)
+    assert not enrich_position(pos, VAL, SC, cand).review
+    # taxa vinda do próprio Runflow (fallback) não gera spread
+    sem = copy.deepcopy(pos)
+    for lot in sem.lots:
+        lot.pu_market = lot.pu_curve * 50
+    f = enrich_position(sem, VAL, SC, cand)
+    assert f.market_rate.source == SRC_RUNFLOW_RATE and f.desk_spread is None and not f.review
 
 
 def test_enrich_exige_data():
@@ -467,6 +507,7 @@ def test_export_cliente_sem_colunas_internas(full_run):
     for cab in load_internal_columns(EXAMPLE).headers.values():
         assert cab.lower() not in blob
     assert "runflow" not in blob and "lastro" not in blob
+    assert "spread estimado da mesa" not in blob and "revisar" not in blob
     assert "não constitui recomendação" in blob
 
 
@@ -475,6 +516,7 @@ def test_export_interno_tem_colunas_internas(full_run):
     cells = _cells(report.to_excel(rep, en, "interno", rf.internal_labels))
     blob = " | ".join(cells)
     assert report.LASTRO_COL in blob
+    assert report.DESK_SPREAD_COL in blob and report.REVIEW_COL in blob
     assert any(rot in blob for rot in rf.internal_labels.values())
     assert "Runflow" in blob  # interno pode citar a fonte
 
@@ -546,3 +588,32 @@ def test_coleta_grava_fonte_url_e_horario(tmp_path, monkeypatch):
     assert [r["reuniao"] for r in fs["reunioes"]] == ["R8/2026", "R1/2027"]
     td = json.loads((tmp_path / "tesouro_direto.json").read_text("utf-8"))["dados"]
     assert len(td) == 1 and td[0]["taxa_compra"] == 7.91
+
+
+# ============================================================ atualidade dos dados públicos
+def test_atualidade_3_dias_uteis():
+    from cpsim.curves import freshness, oldest_collection
+
+    pl = {**_payloads(), "ipca_mensal": {"dados": []}}
+    for v in pl.values():
+        v["coletado_em"] = "2026-11-06T20:05:00-03:00"  # sexta
+    pd = PublicData.from_payloads(pl)
+    assert oldest_collection(pd) == D(2026, 11, 6)
+    # seg 09, ter 10, qua 11 = 3 dias úteis -> ainda válido; qui 12 -> 4 -> vencido
+    assert not any(f.stale for f in freshness(pd, D(2026, 11, 11)))
+    assert all(f.stale for f in freshness(pd, D(2026, 11, 12)))
+    assert freshness(pd, D(2026, 11, 11))[0].age_business_days == 3
+    sem = freshness(PublicData.from_payloads({}), D(2026, 11, 11))
+    assert all(f.stale and f.collected is None for f in sem)
+    assert oldest_collection(PublicData.from_payloads({})) is None
+
+
+def test_json_publicos_enxutos():
+    for f in (ROOT / "data" / "public").glob("*.json"):
+        assert f.stat().st_size < 20_000, f.name  # só séries e vencimentos usados
+        d = json.loads(f.read_text("utf-8"))
+        if f.name != "_status.json":
+            assert {"fonte", "url", "coletado_em", "dados"} <= set(d)
+    td = json.loads((ROOT / "data" / "public" / "tesouro_direto.json").read_text("utf-8"))
+    assert {r["titulo"] for r in td["dados"]} == {"Tesouro IPCA+ com Juros Semestrais"}
+    assert len({r["data_base"] for r in td["dados"]}) == 1

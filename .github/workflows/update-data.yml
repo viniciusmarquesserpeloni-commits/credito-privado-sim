@@ -1,0 +1,63 @@
+# Coleta os dados PÚBLICOS e publica o site no GitHub Pages com eles. SEM commit na main:
+# os JSON vão só no artefato do Pages (a cópia em data/public/ do repositório é a reserva).
+# Dias úteis às 20h de Brasília (23h UTC), disparo manual, e chamado pelo pages.yml a cada push.
+# Regra 5: só fontes abertas (BCB SGS 12/432/433, Focus, Tesouro Direto); nada de ANBIMA ou B3.
+name: Dados públicos e site
+
+on:
+  schedule:
+    - cron: "0 23 * * 1-5"
+  workflow_dispatch:
+  workflow_call:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Instalar dependências
+        run: pip install -e ".[dev]"
+
+      # Se uma fonte falhar, o script mantém o JSON anterior (o versionado) e registra o erro;
+      # se todas falharem, o site sai com a reserva e a tela mostra a data antiga.
+      - name: Coletar dados públicos (sem commit)
+        run: python scripts/update_public_data.py || echo "::warning::coleta falhou; usando os dados versionados"
+
+      - name: Situação da coleta
+        run: cat data/public/_status.json
+
+      - name: Testes (inclui privacidade)
+        run: pytest
+
+      - name: Montar _site/ (app + dados públicos recém-coletados)
+        run: python scripts/build_site.py
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    concurrency:
+      group: pages-deploy
+      cancel-in-progress: false
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

@@ -23,6 +23,8 @@ _RUNFLOW = re.compile(r"run\s*-?\s*flow", re.I)
 _RUNFLOW_PREP = re.compile(r"\b([dn])o\s+(run\s*-?\s*flow)", re.I)
 _LASTRO = re.compile(r"\s*(e\s+)?lastro(\s+dispon[ií]vel)?", re.I)
 LASTRO_COL = "Lastro disponível"
+DESK_SPREAD_COL = "Spread estimado da mesa (bps)"
+REVIEW_COL = "Revisar (spread > 150 bps)"
 
 
 def sanitize(text: Any, mode: Mode) -> Any:
@@ -51,7 +53,7 @@ def positions_table(enriched: list[EnrichedPosition], mode: Mode) -> list[dict[s
     for e in enriched:
         p = e.position
         mr, du = e.market_rate, e.duration
-        rows.append(_clean_row({
+        row = {
             "Código": e.code,
             "Tipo": p.asset_type,
             "Emissor": p.issuer,
@@ -68,7 +70,12 @@ def positions_table(enriched: list[EnrichedPosition], mode: Mode) -> list[dict[s
             "Marcação vs curva": e.mtm_vs_curve,
             "Na análise": "sim" if e.in_scope else f"não ({e.scope_note})",
             "Alertas": "; ".join(e.alerts),
-        }, mode))
+        }
+        if mode == "interno":  # regra 6: nunca no modo cliente
+            row[DESK_SPREAD_COL] = (round(e.desk_spread * 1e4, 1)
+                                    if e.desk_spread is not None else None)
+            row[REVIEW_COL] = "sim" if e.review else ""
+        rows.append(_clean_row(row, mode))
     return rows
 
 

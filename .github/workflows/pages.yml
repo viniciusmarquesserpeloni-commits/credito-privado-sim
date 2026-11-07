@@ -1,52 +1,16 @@
-# Publica o app (stlite) no GitHub Pages. Só sobe se os testes (inclusive privacidade) passarem.
+# Publica o site a cada push na main, com dados públicos coletados na hora.
+# Reaproveita o mesmo fluxo do update-data.yml (coleta -> testes -> build -> deploy), sem commit.
 name: Site (GitHub Pages)
 
 on:
   push:
     branches: [main]
-  workflow_dispatch:
 
 permissions:
   contents: read
   pages: write
   id-token: write
 
-concurrency:
-  group: pages
-  cancel-in-progress: false
-
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v5
-
-      - uses: actions/setup-python@v6
-        with:
-          python-version: "3.12"
-          cache: pip
-
-      - name: Instalar dependências
-        run: pip install -e ".[dev]"
-
-      - name: Testes (inclui privacidade)
-        run: pytest
-
-      - name: Montar _site/
-        run: python scripts/build_site.py
-
-      - uses: actions/configure-pages@v5
-
-      - uses: actions/upload-pages-artifact@v4
-        with:
-          path: _site
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - id: deployment
-        uses: actions/deploy-pages@v4
+  site:
+    uses: ./.github/workflows/update-data.yml

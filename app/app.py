@@ -7,6 +7,7 @@ Trocas, Metodologia) chegam na Fase 3.
 
 from __future__ import annotations
 
+import datetime as dt
 import sys
 import time
 from importlib import metadata
@@ -20,6 +21,8 @@ import pandas as pd  # noqa: E402
 import streamlit as st  # noqa: E402
 
 from cpsim.config import EXAMPLE, load_internal_columns, parse_internal_columns  # noqa: E402
+from cpsim.curves import (MAX_IDADE_DIAS_UTEIS, freshness, load_public,  # noqa: E402
+                          oldest_collection)
 from cpsim.normalize import fmt_brl, fmt_pct  # noqa: E402
 from cpsim.parsers.mapa_pdf import parse_mapa  # noqa: E402
 from cpsim.parsers.runflow_xlsx import read_runflow  # noqa: E402
@@ -44,6 +47,17 @@ with st.expander("Ambiente"):
     st.write(f"**Execução:** {'navegador (Pyodide/stlite)' if NO_NAVEGADOR else 'Python local'} "
              f"· **Python** {sys.version.split()[0]}")
     st.write(" · ".join(f"{k} {v}" for k, v in versoes.items()))
+
+# ---------------------------------------------------------------- dados públicos
+publicos = load_public()
+idades = freshness(publicos, dt.date.today())
+coleta = oldest_collection(publicos)
+st.caption("Dados públicos (BCB SGS, Focus, Tesouro Direto): coletados em "
+           + (coleta.strftime("%d/%m/%Y") if coleta else "—"))
+vencidos = [f.name for f in idades if f.stale]
+if vencidos:
+    st.warning(f"Dados públicos com mais de {MAX_IDADE_DIAS_UTEIS} dias úteis (ou ausentes): "
+               + ", ".join(vencidos) + ". CDI, IPCA e NTN-B podem estar desatualizados.")
 
 # ---------------------------------------------------------------- entradas
 st.subheader("Arquivos")

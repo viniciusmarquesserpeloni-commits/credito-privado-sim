@@ -83,6 +83,36 @@ def load_public(directory: str | Path = PUBLIC_DIR) -> PublicData:
     return PublicData.from_payloads(payloads)
 
 
+# ----------------------------------------------------------------------------- atualidade
+MAX_IDADE_DIAS_UTEIS = 3
+
+
+@dataclass(frozen=True)
+class Freshness:
+    name: str
+    collected: dt.date | None
+    age_business_days: int | None
+    stale: bool
+
+
+def freshness(pd: PublicData, today: dt.date,
+              max_business_days: int = MAX_IDADE_DIAS_UTEIS) -> list[Freshness]:
+    """Idade de cada arquivo público em dias úteis desde a coleta. Acima do limite -> vencido
+    (o app alerta). Arquivo sem data de coleta conta como vencido."""
+    out = []
+    for name in (f.removesuffix(".json") for f in FILES):
+        raw = pd.collected_at.get(name, "")
+        d = _d(raw) if raw else None
+        age = business_days(d, today) if d else None
+        out.append(Freshness(name, d, age, age is None or age > max_business_days))
+    return out
+
+
+def oldest_collection(pd: PublicData) -> dt.date | None:
+    ds = [_d(v) for v in pd.collected_at.values() if v]
+    return min(ds) if ds else None
+
+
 # ----------------------------------------------------------------------------- CDI
 def copom_date(label: str) -> dt.date:
     """'R6/2028' -> data APROXIMADA da reunião (ver COPOM_MES_DIA)."""

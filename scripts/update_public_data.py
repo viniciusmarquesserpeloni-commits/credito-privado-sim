@@ -5,8 +5,12 @@ Fontes (regra 5: só fontes abertas, sem robô para ANBIMA/B3):
 - BCB Focus (Olinda): Selic por reunião do Copom, IPCA anual e IPCA 12 meses (suavizada)
 - Tesouro Transparente: preços e taxas do Tesouro Direto (taxas de VAREJO)
 
-Cada arquivo grava `fonte`, `url`, `coletado_em` (ISO, horário de Brasília) e `dados`.
-Se uma coleta falhar, o arquivo anterior é mantido e o erro vai para `_status.json`.
+Cada arquivo grava `fonte`, `url`, `coletado_em` (ISO, horário de Brasília) e `dados`, só com as
+séries e vencimentos que o simulador usa (JSON enxutos). Se uma coleta falhar, o arquivo
+anterior é mantido e o erro vai para `_status.json`.
+
+No GitHub, o workflow `update-data.yml` roda este script e publica os JSON JUNTO com o site no
+Pages, sem commit na main. A cópia versionada em data/public/ é só a reserva (uso local/testes).
 
 Uso:  python scripts/update_public_data.py
 """
@@ -30,10 +34,11 @@ OLINDA = "https://olinda.bcb.gov.br/olinda/servico/Expectativas/versao/v1/odata"
 TD_CSV = ("https://www.tesourotransparente.gov.br/ckan/dataset/df56aa42-484a-4a59-8184-"
           "7676580c81e3/resource/796d2059-14e9-44e3-80c9-2d9e30b405c1/download/"
           "precotaxatesourodireto.csv")
-TD_DIAS = 5  # datas-base mais recentes guardadas do Tesouro Direto
-# Só os títulos usados: NTN-B (referência de spread IPCA+) e prefixados (curva pré, futuro).
-TD_TITULOS = {"Tesouro IPCA+ com Juros Semestrais", "Tesouro IPCA+", "Tesouro Prefixado",
-              "Tesouro Prefixado com Juros Semestrais"}
+TD_DIAS = 1  # só a data-base mais recente do Tesouro Direto
+# Só o título usado: NTN-B (referência de spread dos papéis IPCA+).
+TD_TITULOS = {"Tesouro IPCA+ com Juros Semestrais"}
+# Janelas: o núcleo usa o último CDI e a última meta; o IPCA mensal é só referência na tela.
+DIAS_SGS = {12: 45, 432: 45, 433: 400}
 
 
 def _get(url: str, timeout: int = 90) -> bytes:
@@ -56,8 +61,8 @@ def _num(s: str) -> float | None:
 
 
 # ----------------------------------------------------------------------------- coletas
-def sgs(serie: int, hoje: dt.date, anos: int = 2) -> tuple[str, list[dict]]:
-    ini = (hoje - dt.timedelta(days=365 * anos)).strftime("%d/%m/%Y")
+def sgs(serie: int, hoje: dt.date) -> tuple[str, list[dict]]:
+    ini = (hoje - dt.timedelta(days=DIAS_SGS[serie])).strftime("%d/%m/%Y")
     url = (f"https://api.bcb.gov.br/dados/serie/bcdata.sgs.{serie}/dados?formato=json"
            f"&dataInicial={ini}&dataFinal={hoje.strftime('%d/%m/%Y')}")
     rows = _json(url)
@@ -116,8 +121,7 @@ def tesouro_direto() -> tuple[str, list[dict]]:
         out.append({
             "titulo": r["Tipo Titulo"], "vencimento": _br_date(r["Data Vencimento"]),
             "data_base": r["_base"], "taxa_compra": _num(r["Taxa Compra Manha"]),
-            "taxa_venda": _num(r["Taxa Venda Manha"]), "pu_compra": _num(r["PU Compra Manha"]),
-            "pu_venda": _num(r["PU Venda Manha"]), "pu_base": _num(r["PU Base Manha"]),
+            "taxa_venda": _num(r["Taxa Venda Manha"]),
         })
     out.sort(key=lambda r: (r["data_base"], r["titulo"], r["vencimento"]))
     return TD_CSV, out
@@ -127,7 +131,7 @@ def tesouro_direto() -> tuple[str, list[dict]]:
 def _write(nome: str, fonte: str, url: str, dados, agora: dt.datetime) -> None:
     payload = {"fonte": fonte, "url": url, "coletado_em": agora.isoformat(timespec="seconds"),
                "dados": dados}
-    (OUT / nome).write_text(json.dumps(payload, ensure_ascii=False, indent=1) + "\n",
+    (OUT / nome).write_text(json.dumps(payload, ensure_ascii=False, separators=(",", ":")) + "\n",
                             encoding="utf-8")
 
 
@@ -138,7 +142,7 @@ def main() -> int:
     jobs: list[tuple[str, str, Callable[[], tuple[str, object]]]] = [
         ("cdi.json", "BCB SGS 12 — CDI (% a.d.)", lambda: sgs(12, hoje)),
         ("selic_meta.json", "BCB SGS 432 — meta Selic (% a.a.)", lambda: sgs(432, hoje)),
-        ("ipca_mensal.json", "BCB SGS 433 — IPCA (% a.m.)", lambda: sgs(433, hoje, anos=3)),
+        ("ipca_mensal.json", "BCB SGS 433 — IPCA (% a.m.)", lambda: sgs(433, hoje)),
         ("focus_selic.json", "BCB Focus — Selic por reunião (mediana, % a.a.)", focus_selic),
         ("focus_ipca.json", "BCB Focus — IPCA anual e 12 meses (mediana, %)", focus_ipca),
         ("tesouro_direto.json",

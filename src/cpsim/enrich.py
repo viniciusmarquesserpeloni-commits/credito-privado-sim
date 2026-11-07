@@ -29,14 +29,16 @@ from .cashflows import build_schedule
 from .models import Candidate, Indexer, Kind, MapaPositions, Position, Rate, Rating, Sourced
 from .normalize import strip_accents
 from .pricing import brent, macaulay_duration, price
-from .rates import cdi_plus_to_annual, pct_cdi_to_annual
+from .rates import cdi_plus_to_annual, pct_cdi_to_annual, rate_difference
 from .scenarios import Scenario
 from .taxes import DEFAULT_POLICY, TaxPolicy
 
 DEFAULT_COUPON = "Semestral"
 DEFAULT_AMORTIZATION = "Bullet"
 SCOPE_TYPES = {"DEB", "CRI", "CRA"}
-LOT_DISPERSION_ALERT = 0.0005  # 5 bps
+LOT_DISPERSION_ALERT = 0.0010  # 10 bps: lotes do mesmo código devem dar a mesma taxa
+# Spread estimado da mesa (só modo interno) acima disso marca a posição para revisão.
+DESK_SPREAD_REVIEW = 0.0150  # 150 bps
 
 SRC_OVERRIDE = "informado pelo usuário"
 SRC_IMPLIED_RUNFLOW = "estimada pelo PU Mercado (fluxo do Runflow)"
@@ -74,6 +76,9 @@ class EnrichedPosition:
     issuer_key: str
     tax_exempt: Sourced  # value: bool
     alerts: list[str] = field(default_factory=list)
+    # --- só modo interno (nunca exibir ao cliente, nunca usar em ranking) ---
+    desk_spread: float | None = None  # taxa estimada − Taxa de Compra do Runflow (taxa anual)
+    review: bool = False  # spread estimado da mesa > 150 bps
 
     @property
     def code(self) -> str:
@@ -219,8 +224,8 @@ def enrich_position(pos: Position, valuation: dt.date, scenario: Scenario,
         market_rate = Sourced(y, src_implied, Kind.ESTIMATIVA, "taxa estimada")
         disp = max(v for v, _ in lot_rates) - min(v for v, _ in lot_rates)
         if disp > LOT_DISPERSION_ALERT:
-            alerts.append(f"lotes do mesmo papel dão taxas diferentes ({disp * 1e4:.0f} bps): "
-                          "o fluxo usado pode não ser o do papel")
+            alerts.append(f"lotes do mesmo código dão taxas diferentes ({disp * 1e4:.0f} bps): "
+                          "verificar PU Curva/fluxo")
         if src_implied == SRC_IMPLIED_DEFAULT:
             alerts.append("taxa estimada com fluxo padrão; se o papel amortiza antes do "
                           "vencimento, informe a amortização (o erro cresce com a distância "
@@ -250,6 +255,13 @@ def enrich_position(pos: Position, valuation: dt.date, scenario: Scenario,
     if duration is not None and market_rate is not None and idx is not None:
         dmod = duration.value / (1 + discount_rate(idx, market_rate.value, scenario))
 
+    # Spread estimado da mesa = taxa estimada − Taxa de Compra do mesmo código (%CDI: × CDI).
+    desk_spread = None
+    if (market_rate is not None and market_rate.kind is Kind.ESTIMATIVA and candidate is not None
+            and candidate.rate is not None and candidate.indexer is idx and idx is not None):
+        desk_spread = rate_difference(Rate(idx, market_rate.value), candidate.rate,
+                                      cdi=scenario.cdi)
+
     rating = candidate.rating if candidate else Rating("", None, None)
     if not rating.has_rating:
         alerts.append("sem rating" + ("" if candidate else " (papel fora do Runflow)"))
@@ -260,6 +272,7 @@ def enrich_position(pos: Position, valuation: dt.date, scenario: Scenario,
         lot_rates=[v for v, _ in lot_rates], rating=rating,
         sector=candidate.sector if candidate else "", issuer_key=issuer_key(issuer),
         tax_exempt=_tax_exempt(pos, candidate, policy), alerts=alerts,
+        desk_spread=desk_spread, review=desk_spread is not None and desk_spread > DESK_SPREAD_REVIEW,
     )
 
 

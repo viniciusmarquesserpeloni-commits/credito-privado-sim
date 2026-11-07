@@ -47,7 +47,15 @@ colunas internas também vêm do config local).
   3. nos dois casos a taxa y resolve PU(y)/PU(taxa_op) = PU Mercado/PU Curva com o mesmo fluxo
      (VNA se cancela; o PU Curva é o PU na taxa de operação — conferido no Mapa real) e sai
      marcada "taxa estimada"; sem Runflow a duration sai do mesmo cálculo;
-  4. o usuário pode sobrescrever cupom, amortização, duration ou taxa (`Override`, tela Carteira).
+  4. o usuário pode sobrescrever cupom, amortização, duration ou taxa (`Override`, tela Carteira);
+  5. Taxa de Compra do Runflow só como fallback, marcada "aproximação";
+  6. lotes do mesmo código devem dar a mesma taxa: divergência > 10 bps -> alerta
+     "verificar PU Curva/fluxo";
+  7. modo interno: spread estimado da mesa = taxa estimada − Taxa de Compra; > 150 bps marca a
+     posição para revisão (nunca no modo cliente, nunca no ranking).
+- **Dados públicos:** `update-data.yml` (dias úteis 20h BRT + manual + chamado pelo `pages.yml`)
+  coleta e publica os JSON enxutos JUNTO com o site, **sem commit na main**; `data/public/` no
+  repositório é só a reserva. O app mostra a data da coleta e alerta se > 3 dias úteis.
 - Premissa "amortização no vencimento" tem erro conhecido (ver `docs/FASE2_RELATORIO.md`).
 
 ## Stack

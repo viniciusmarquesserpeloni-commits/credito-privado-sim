@@ -1,0 +1,12 @@
+{
+ "executado_em": "2026-11-07T01:37:09-03:00",
+ "ok": [
+  "cdi.json",
+  "selic_meta.json",
+  "ipca_mensal.json",
+  "focus_selic.json",
+  "focus_ipca.json",
+  "tesouro_direto.json"
+ ],
+ "erros": {}
+}

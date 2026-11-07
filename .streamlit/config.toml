@@ -1,0 +1,10 @@
+# Regra 8: telemetria do Streamlit desligada.
+[browser]
+gatherUsageStats = false
+
+[server]
+# Uploads ficam só em memória; limite generoso para PDFs de várias páginas.
+maxUploadSize = 50
+
+[client]
+toolbarMode = "viewer"

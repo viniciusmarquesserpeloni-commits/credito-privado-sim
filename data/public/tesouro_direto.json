@@ -1,0 +1,1307 @@
+{
+ "fonte": "Tesouro Transparente — Tesouro Direto (taxas de VAREJO, % a.a.)",
+ "url": "https://www.tesourotransparente.gov.br/ckan/dataset/df56aa42-484a-4a59-8184-7676580c81e3/resource/796d2059-14e9-44e3-80c9-2d9e30b405c1/download/precotaxatesourodireto.csv",
+ "coletado_em": "2026-11-07T01:37:09-03:00",
+ "dados": [
+  {
+   "titulo": "Tesouro IPCA+",
+   "vencimento": "2029-05-15",
+   "data_base": "2026-10-29",
+   "taxa_compra": 7.76,
+   "taxa_venda": 7.88,
+   "pu_compra": 3955.7,
+   "pu_venda": 3943.22,
+   "pu_base": 3943.22
+  },
+  {
+   "titulo": "Tesouro IPCA+",
+   "vencimento": "2032-08-15",
+   "data_base": "2026-10-29",
+   "taxa_compra": 7.84,
+   "taxa_venda": 7.96,
+   "pu_compra": 3090.37,
+   "pu_venda": 3069.51,
+   "pu_base": 3069.51
+  },
+  {
+   "titulo": "Tesouro IPCA+",
+   "vencimento": "2035-05-15",
+   "data_base": "2026-10-29",
+   "taxa_compra": 7.78,
+   "taxa_venda": 7.9,
+   "pu_compra": 2528.27,
+   "pu_venda": 2503.61,
+   "pu_base": 2503.61
+  },
+  {
+   "titulo": "Tesouro IPCA+",
+   "vencimento": "2040-08-15",
+   "data_base": "2026-10-29",
+   "taxa_compra": 7.45,
+   "taxa_venda": 7.57,
+   "pu_compra": 1781.45,
+   "pu_venda": 1753.77,
+   "pu_base": 1753.77
+  },
+  {
+   "titulo": "Tesouro IPCA+",
+   "vencimento": "2045-05-15",
+   "data_base": "2026-10-29",
+   "taxa_compra": 7.2,
+   "taxa_venda": 7.32,
+   "pu_compra": 1325.61,
+   "pu_venda": 1298.12,
+   "pu_base": 1298.12
+  },
+  {
+   "titulo": "Tesouro IPCA+",
+   "vencimento": "2050-08-15",
+   "data_base": "2026-10-29",
+   "taxa_compra": 7.13,
+   "taxa_venda": 7.25,
+   "pu_compra": 936.61,
+   "pu_venda": 911.83,
+   "pu_base": 911.83
+  },
+  {
+   "titulo": "Tesouro IPCA+ com Juros Semestrais",
+   "vencimento": "2030-08-15",
+   "data_base": "2026-10-29",
+   "taxa_compra": 7.8,
+   "taxa_venda": 7.92,
+   "pu_compra": 4571.94,
+   "pu_venda": 4553.17,
+   "pu_base": 4553.17
+  },
+  {
+   "titulo": "Tesouro IPCA+ com Juros Semestrais",
+   "vencimento": "2032-08-15",
+   "data_base": "2026-10-29",
+   "taxa_compra": 7.82,
+   "taxa_venda": 7.94,
+   "pu_compra": 4453.74,
+   "pu_venda": 4428.14,
+   "pu_base": 4428.14
+  },
+  {
+   "titulo": "Tesouro IPCA+ com Juros Semestrais",
+   "vencimento": "2035-05-15",
+   "data_base": "2026-10-29",
+   "taxa_compra": 7.77,
+   "taxa_venda": 7.89,
+   "pu_compra": 4411.05,
+   "pu_venda": 4377.83,
+   "pu_base": 4377.83
+  },
+  {
+   "titulo": "Tesouro IPCA+ com Juros Semestrais",
+   "vencimento": "2037-05-15",
+   "data_base": "2026-10-29",
+   "taxa_compra": 7.67,
+   "taxa_venda": 7.79,
+   "pu_compra": 4364.4,
+   "pu_venda": 4326.45,
+   "pu_base": 4326.45
+  },
+  {
+   "titulo": "Tesouro IPCA+ com Juros Semestrais",
+   "vencimento": "2040-08-15",
+   "data_base": "2026-10-29",
+   "taxa_compra": 7.53,
+   "taxa_venda": 7.65,
+   "pu_compra": 4242.58,
+   "pu_venda": 4198.22,
+   "pu_base": 4198.22
+  },
+  {
+   "titulo": "Tesouro IPCA+ com Juros Semestrais",
+   "vencimento": "2045-05-15",
+   "data_base": "2026-10-29",
+   "taxa_compra": 7.36,
+   "taxa_venda": 7.48,
+   "pu_compra": 4286.06,
+   "pu_venda": 4234.41,
+   "pu_base": 4234.41
+  },
+  {
+   "titulo": "Tesouro IPCA+ com Juros Semestrais",
+   "vencimento": "2050-08-15",
+   "data_base": "2026-10-29",
+   "taxa_compra": 7.31,
+   "taxa_venda": 7.43,
+   "pu_compra": 4166.82,
+   "pu_venda": 4110.13,
+   "pu_base": 4110.13
+  },
+  {
+   "titulo": "Tesouro IPCA+ com Juros Semestrais",
+   "vencimento": "2055-05-15",
+   "data_base": "2026-10-29",
+   "taxa_compra": 7.31,
+   "taxa_venda": 7.43,
+   "pu_compra": 4194.89,
+   "pu_venda": 4135.47,
+   "pu_base": 4135.47
+  },
+  {
+   "titulo": "Tesouro IPCA+ com Juros Semestrais",
+   "vencimento": "2060-08-15",
+   "data_base": "2026-10-29",
+   "taxa_compra": 7.31,
+   "taxa_venda": 7.43,
+   "pu_compra": 4088.76,
+   "pu_venda": 4027.44,
+   "pu_base": 4027.44
+  },
+  {
+   "titulo": "Tesouro Prefixado",
+   "vencimento": "2027-01-01",
+   "data_base": "2026-10-29",
+   "taxa_compra": 13.45,
+   "taxa_venda": 13.57,
+   "pu_compra": 979.18,
+   "pu_venda": 978.52,
+   "pu_base": 978.52
+  },
+  {
+   "titulo": "Tesouro Prefixado",
+   "vencimento": "2028-01-01",
+   "data_base": "2026-10-29",
+   "taxa_compra": 14.28,
+   "taxa_venda": 14.4,
+   "pu_compra": 856.24,
+   "pu_venda": 854.74,
+   "pu_base": 854.74
+  },
+  {
+   "titulo": "Tesouro Prefixado",
+   "vencimento": "2029-01-01",
+   "data_base": "2026-10-29",
+   "taxa_compra": 14.8,
+   "taxa_venda": 14.92,
+   "pu_compra": 743.55,
+   "pu_venda": 741.48,
+   "pu_base": 741.48
+  },
+  {
+   "titulo": "Tesouro Prefixado",
+   "vencimento": "2031-01-01",
+   "data_base": "2026-10-29",
+   "taxa_compra": 15.11,
+   "taxa_venda": 15.23,
+   "pu_compra": 558.85,
+   "pu_venda": 556.14,
+   "pu_base": 556.14
+  },
+  {
+   "titulo": "Tesouro Prefixado",
+   "vencimento": "2032-01-01",
+   "data_base": "2026-10-29",
+   "taxa_compra": 15.17,
+   "taxa_venda": 15.29,
+   "pu_compra": 484.2,
+   "pu_venda": 481.34,
+   "pu_base": 481.34
+  },
+  {
+   "titulo": "Tesouro Prefixado com Juros Semestrais",
+   "vencimento": "2027-01-01",
+   "data_base": "2026-10-29",
+   "taxa_compra": 13.49,
+   "taxa_venda": 13.61,
+   "pu_compra": 1026.92,
+   "pu_venda": 1026.21,
+   "pu_base": 1026.21
+  },
+  {
+   "titulo": "Tesouro Prefixado com Juros Semestrais",
+   "vencimento": "2029-01-01",
+   "data_base": "2026-10-29",
+   "taxa_compra": 14.67,
+   "taxa_venda": 14.79,
+   "pu_compra": 954.62,
+   "pu_venda": 952.19,
+   "pu_base": 952.19
+  },
+  {
+   "titulo": "Tesouro Prefixado com Juros Semestrais",
+   "vencimento": "2031-01-01",
+   "data_base": "2026-10-29",
+   "taxa_compra": 15.1,
+   "taxa_venda": 15.22,
+   "pu_compra": 889.15,
+   "pu_venda": 885.59,
+   "pu_base": 885.59
+  },
+  {
+   "titulo": "Tesouro Prefixado com Juros Semestrais",
+   "vencimento": "2033-01-01",
+   "data_base": "2026-10-29",
+   "taxa_compra": 15.21,
+   "taxa_venda": 15.33,
+   "pu_compra": 840.47,
+   "pu_venda": 836.16,
+   "pu_base": 836.16
+  },
+  {
+   "titulo": "Tesouro Prefixado com Juros Semestrais",
+   "vencimento": "2035-01-01",
+   "data_base": "2026-10-29",
+   "taxa_compra": 15.15,
+   "taxa_venda": 15.27,
+   "pu_compra": 809.03,
+   "pu_venda": 804.2,
+   "pu_base": 804.2
+  },
+  {
+   "titulo": "Tesouro Prefixado com Juros Semestrais",
+   "vencimento": "2037-01-01",
+   "data_base": "2026-10-29",
+   "taxa_compra": 15.0,
+   "taxa_venda": 15.12,
+   "pu_compra": 789.36,
+   "pu_venda": 784.15,
+   "pu_base": 784.15
+  },
+  {
+   "titulo": "Tesouro IPCA+",
+   "vencimento": "2029-05-15",
+   "data_base": "2026-10-30",
+   "taxa_compra": 7.8,
+   "taxa_venda": 7.92,
+   "pu_compra": 3954.27,
+   "pu_venda": 3941.01,
+   "pu_base": 3941.01
+  },
+  {
+   "titulo": "Tesouro IPCA+",
+   "vencimento": "2032-08-15",
+   "data_base": "2026-10-30",
+   "taxa_compra": 7.89,
+   "taxa_venda": 8.01,
+   "pu_compra": 3083.9,
+   "pu_venda": 3062.48,
+   "pu_base": 3062.48
+  },
+  {
+   "titulo": "Tesouro IPCA+",
+   "vencimento": "2035-05-15",
+   "data_base": "2026-10-30",
+   "taxa_compra": 7.88,
+   "taxa_venda": 8.0,
+   "pu_compra": 2509.91,
+   "pu_venda": 2484.95,
+   "pu_base": 2484.95
+  },
+  {
+   "titulo": "Tesouro IPCA+",
+   "vencimento": "2040-08-15",
+   "data_base": "2026-10-30",
+   "taxa_compra": 7.56,
+   "taxa_venda": 7.68,
+   "pu_compra": 1757.62,
+   "pu_venda": 1729.99,
+   "pu_base": 1729.99
+  },
+  {
+   "titulo": "Tesouro IPCA+",
+   "vencimento": "2045-05-15",
+   "data_base": "2026-10-30",
+   "taxa_compra": 7.32,
+   "taxa_venda": 7.44,
+   "pu_compra": 1299.28,
+   "pu_venda": 1272.11,
+   "pu_base": 1272.11
+  },
+  {
+   "titulo": "Tesouro IPCA+",
+   "vencimento": "2050-08-15",
+   "data_base": "2026-10-30",
+   "taxa_compra": 7.27,
+   "taxa_venda": 7.39,
+   "pu_compra": 908.63,
+   "pu_venda": 884.45,
+   "pu_base": 884.45
+  },
+  {
+   "titulo": "Tesouro IPCA+ com Juros Semestrais",
+   "vencimento": "2030-08-15",
+   "data_base": "2026-10-30",
+   "taxa_compra": 7.84,
+   "taxa_venda": 7.96,
+   "pu_compra": 4568.84,
+   "pu_venda": 4549.19,
+   "pu_base": 4549.19
+  },
+  {
+   "titulo": "Tesouro IPCA+ com Juros Semestrais",
+   "vencimento": "2032-08-15",
+   "data_base": "2026-10-30",
+   "taxa_compra": 7.86,
+   "taxa_venda": 7.98,
+   "pu_compra": 4448.28,
+   "pu_venda": 4421.84,
+   "pu_base": 4421.84
+  },
+  {
+   "titulo": "Tesouro IPCA+ com Juros Semestrais",
+   "vencimento": "2035-05-15",
+   "data_base": "2026-10-30",
+   "taxa_compra": 7.86,
+   "taxa_venda": 7.98,
+   "pu_compra": 4389.83,
+   "pu_venda": 4355.94,
+   "pu_base": 4355.94
+  },
+  {
+   "titulo": "Tesouro IPCA+ com Juros Semestrais",
+   "vencimento": "2037-05-15",
+   "data_base": "2026-10-30",
+   "taxa_compra": 7.76,
+   "taxa_venda": 7.88,
+   "pu_compra": 4339.54,
+   "pu_venda": 4301.02,
+   "pu_base": 4301.02
+  },
+  {
+   "titulo": "Tesouro IPCA+ com Juros Semestrais",
+   "vencimento": "2040-08-15",
+   "data_base": "2026-10-30",
+   "taxa_compra": 7.63,
+   "taxa_venda": 7.75,
+   "pu_compra": 4209.2,
+   "pu_venda": 4164.5,
+   "pu_base": 4164.5
+  },
+  {
+   "titulo": "Tesouro IPCA+ com Juros Semestrais",
+   "vencimento": "2045-05-15",
+   "data_base": "2026-10-30",
+   "taxa_compra": 7.47,
+   "taxa_venda": 7.59,
+   "pu_compra": 4242.42,
+   "pu_venda": 4190.71,
+   "pu_base": 4190.71
+  },
+  {
+   "titulo": "Tesouro IPCA+ com Juros Semestrais",
+   "vencimento": "2050-08-15",
+   "data_base": "2026-10-30",
+   "taxa_compra": 7.43,
+   "taxa_venda": 7.55,
+   "pu_compra": 4113.86,
+   "pu_venda": 4057.48,
+   "pu_base": 4057.48
+  },
+  {
+   "titulo": "Tesouro IPCA+ com Juros Semestrais",
+   "vencimento": "2055-05-15",
+   "data_base": "2026-10-30",
+   "taxa_compra": 7.42,
+   "taxa_venda": 7.54,
+   "pu_compra": 4144.0,
+   "pu_venda": 4084.97,
+   "pu_base": 4084.97
+  },
+  {
+   "titulo": "Tesouro IPCA+ com Juros Semestrais",
+   "vencimento": "2060-08-15",
+   "data_base": "2026-10-30",
+   "taxa_compra": 7.42,
+   "taxa_venda": 7.54,
+   "pu_compra": 4036.03,
+   "pu_venda": 3975.28,
+   "pu_base": 3975.28
+  },
+  {
+   "titulo": "Tesouro Prefixado",
+   "vencimento": "2027-01-01",
+   "data_base": "2026-10-30",
+   "taxa_compra": 13.48,
+   "taxa_venda": 13.6,
+   "pu_compra": 979.63,
+   "pu_venda": 978.97,
+   "pu_base": 978.97
+  },
+  {
+   "titulo": "Tesouro Prefixado",
+   "vencimento": "2028-01-01",
+   "data_base": "2026-10-30",
+   "taxa_compra": 14.32,
+   "taxa_venda": 14.44,
+   "pu_compra": 856.35,
+   "pu_venda": 854.85,
+   "pu_base": 854.85
+  },
+  {
+   "titulo": "Tesouro Prefixado",
+   "vencimento": "2029-01-01",
+   "data_base": "2026-10-30",
+   "taxa_compra": 14.89,
+   "taxa_venda": 15.01,
+   "pu_compra": 742.71,
+   "pu_venda": 740.64,
+   "pu_base": 740.64
+  },
+  {
+   "titulo": "Tesouro Prefixado",
+   "vencimento": "2031-01-01",
+   "data_base": "2026-10-30",
+   "taxa_compra": 15.3,
+   "taxa_venda": 15.42,
+   "pu_compra": 555.37,
+   "pu_venda": 552.67,
+   "pu_base": 552.67
+  },
+  {
+   "titulo": "Tesouro Prefixado",
+   "vencimento": "2032-01-01",
+   "data_base": "2026-10-30",
+   "taxa_compra": 15.38,
+   "taxa_venda": 15.5,
+   "pu_compra": 479.96,
+   "pu_venda": 477.14,
+   "pu_base": 477.14
+  },
+  {
+   "titulo": "Tesouro Prefixado com Juros Semestrais",
+   "vencimento": "2027-01-01",
+   "data_base": "2026-10-30",
+   "taxa_compra": 13.53,
+   "taxa_venda": 13.65,
+   "pu_compra": 1027.37,
+   "pu_venda": 1026.67,
+   "pu_base": 1026.67
+  },
+  {
+   "titulo": "Tesouro Prefixado com Juros Semestrais",
+   "vencimento": "2029-01-01",
+   "data_base": "2026-10-30",
+   "taxa_compra": 14.77,
+   "taxa_venda": 14.89,
+   "pu_compra": 953.55,
+   "pu_venda": 951.12,
+   "pu_base": 951.12
+  },
+  {
+   "titulo": "Tesouro Prefixado com Juros Semestrais",
+   "vencimento": "2031-01-01",
+   "data_base": "2026-10-30",
+   "taxa_compra": 15.29,
+   "taxa_venda": 15.41,
+   "pu_compra": 884.81,
+   "pu_venda": 881.27,
+   "pu_base": 881.27
+  },
+  {
+   "titulo": "Tesouro Prefixado com Juros Semestrais",
+   "vencimento": "2033-01-01",
+   "data_base": "2026-10-30",
+   "taxa_compra": 15.42,
+   "taxa_venda": 15.54,
+   "pu_compra": 834.25,
+   "pu_venda": 829.99,
+   "pu_base": 829.99
+  },
+  {
+   "titulo": "Tesouro Prefixado com Juros Semestrais",
+   "vencimento": "2035-01-01",
+   "data_base": "2026-10-30",
+   "taxa_compra": 15.39,
+   "taxa_venda": 15.51,
+   "pu_compra": 800.78,
+   "pu_venda": 796.02,
+   "pu_base": 796.02
+  },
+  {
+   "titulo": "Tesouro Prefixado com Juros Semestrais",
+   "vencimento": "2037-01-01",
+   "data_base": "2026-10-30",
+   "taxa_compra": 15.23,
+   "taxa_venda": 15.35,
+   "pu_compra": 780.7,
+   "pu_venda": 775.57,
+   "pu_base": 775.57
+  },
+  {
+   "titulo": "Tesouro IPCA+",
+   "vencimento": "2029-05-15",
+   "data_base": "2026-11-03",
+   "taxa_compra": 7.95,
+   "taxa_venda": 8.07,
+   "pu_compra": 3941.99,
+   "pu_venda": 3929.57,
+   "pu_base": 3929.57
+  },
+  {
+   "titulo": "Tesouro IPCA+",
+   "vencimento": "2032-08-15",
+   "data_base": "2026-11-03",
+   "taxa_compra": 8.03,
+   "taxa_venda": 8.15,
+   "pu_compra": 3062.14,
+   "pu_venda": 3041.51,
+   "pu_base": 3041.51
+  },
+  {
+   "titulo": "Tesouro IPCA+",
+   "vencimento": "2035-05-15",
+   "data_base": "2026-11-03",
+   "taxa_compra": 8.02,
+   "taxa_venda": 8.14,
+   "pu_compra": 2483.42,
+   "pu_venda": 2459.24,
+   "pu_base": 2459.24
+  },
+  {
+   "titulo": "Tesouro IPCA+",
+   "vencimento": "2040-08-15",
+   "data_base": "2026-11-03",
+   "taxa_compra": 7.69,
+   "taxa_venda": 7.81,
+   "pu_compra": 1729.38,
+   "pu_venda": 1702.57,
+   "pu_base": 1702.57
+  },
+  {
+   "titulo": "Tesouro IPCA+",
+   "vencimento": "2045-05-15",
+   "data_base": "2026-11-03",
+   "taxa_compra": 7.48,
+   "taxa_venda": 7.6,
+   "pu_compra": 1264.57,
+   "pu_venda": 1238.41,
+   "pu_base": 1238.41
+  },
+  {
+   "titulo": "Tesouro IPCA+",
+   "vencimento": "2050-08-15",
+   "data_base": "2026-11-03",
+   "taxa_compra": 7.44,
+   "taxa_venda": 7.56,
+   "pu_compra": 875.56,
+   "pu_venda": 852.46,
+   "pu_base": 852.46
+  },
+  {
+   "titulo": "Tesouro IPCA+ com Juros Semestrais",
+   "vencimento": "2030-08-15",
+   "data_base": "2026-11-03",
+   "taxa_compra": 7.99,
+   "taxa_venda": 8.11,
+   "pu_compra": 4549.25,
+   "pu_venda": 4530.62,
+   "pu_base": 4530.62
+  },
+  {
+   "titulo": "Tesouro IPCA+ com Juros Semestrais",
+   "vencimento": "2032-08-15",
+   "data_base": "2026-11-03",
+   "taxa_compra": 8.0,
+   "taxa_venda": 8.12,
+   "pu_compra": 4422.07,
+   "pu_venda": 4396.72,
+   "pu_base": 4396.72
+  },
+  {
+   "titulo": "Tesouro IPCA+ com Juros Semestrais",
+   "vencimento": "2035-05-15",
+   "data_base": "2026-11-03",
+   "taxa_compra": 8.0,
+   "taxa_venda": 8.12,
+   "pu_compra": 4354.87,
+   "pu_venda": 4322.22,
+   "pu_base": 4322.22
+  },
+  {
+   "titulo": "Tesouro IPCA+ com Juros Semestrais",
+   "vencimento": "2037-05-15",
+   "data_base": "2026-11-03",
+   "taxa_compra": 7.91,
+   "taxa_venda": 8.03,
+   "pu_compra": 4296.12,
+   "pu_venda": 4258.98,
+   "pu_base": 4258.98
+  },
+  {
+   "titulo": "Tesouro IPCA+ com Juros Semestrais",
+   "vencimento": "2040-08-15",
+   "data_base": "2026-11-03",
+   "taxa_compra": 7.76,
+   "taxa_venda": 7.88,
+   "pu_compra": 4164.88,
+   "pu_venda": 4121.66,
+   "pu_base": 4121.66
+  },
+  {
+   "titulo": "Tesouro IPCA+ com Juros Semestrais",
+   "vencimento": "2045-05-15",
+   "data_base": "2026-11-03",
+   "taxa_compra": 7.62,
+   "taxa_venda": 7.74,
+   "pu_compra": 4182.36,
+   "pu_venda": 4132.58,
+   "pu_base": 4132.58
+  },
+  {
+   "titulo": "Tesouro IPCA+ com Juros Semestrais",
+   "vencimento": "2050-08-15",
+   "data_base": "2026-11-03",
+   "taxa_compra": 7.59,
+   "taxa_venda": 7.71,
+   "pu_compra": 4043.42,
+   "pu_venda": 3989.35,
+   "pu_base": 3989.35
+  },
+  {
+   "titulo": "Tesouro IPCA+ com Juros Semestrais",
+   "vencimento": "2055-05-15",
+   "data_base": "2026-11-03",
+   "taxa_compra": 7.57,
+   "taxa_venda": 7.69,
+   "pu_compra": 4074.72,
+   "pu_venda": 4018.14,
+   "pu_base": 4018.14
+  },
+  {
+   "titulo": "Tesouro IPCA+ com Juros Semestrais",
+   "vencimento": "2060-08-15",
+   "data_base": "2026-11-03",
+   "taxa_compra": 7.57,
+   "taxa_venda": 7.69,
+   "pu_compra": 3964.52,
+   "pu_venda": 3906.4,
+   "pu_base": 3906.4
+  },
+  {
+   "titulo": "Tesouro Prefixado",
+   "vencimento": "2027-01-01",
+   "data_base": "2026-11-03",
+   "taxa_compra": 13.49,
+   "taxa_venda": 13.61,
+   "pu_compra": 980.11,
+   "pu_venda": 979.45,
+   "pu_base": 979.45
+  },
+  {
+   "titulo": "Tesouro Prefixado",
+   "vencimento": "2028-01-01",
+   "data_base": "2026-11-03",
+   "taxa_compra": 14.57,
+   "taxa_venda": 14.69,
+   "pu_compra": 854.64,
+   "pu_venda": 853.15,
+   "pu_base": 853.15
+  },
+  {
+   "titulo": "Tesouro Prefixado",
+   "vencimento": "2029-01-01",
+   "data_base": "2026-11-03",
+   "taxa_compra": 15.19,
+   "taxa_venda": 15.31,
+   "pu_compra": 738.99,
+   "pu_venda": 736.93,
+   "pu_base": 736.93
+  },
+  {
+   "titulo": "Tesouro Prefixado",
+   "vencimento": "2031-01-01",
+   "data_base": "2026-11-03",
+   "taxa_compra": 15.57,
+   "taxa_venda": 15.69,
+   "pu_compra": 550.35,
+   "pu_venda": 547.68,
+   "pu_base": 547.68
+  },
+  {
+   "titulo": "Tesouro Prefixado",
+   "vencimento": "2032-01-01",
+   "data_base": "2026-11-03",
+   "taxa_compra": 15.63,
+   "taxa_venda": 15.75,
+   "pu_compra": 474.93,
+   "pu_venda": 472.14,
+   "pu_base": 472.14
+  },
+  {
+   "titulo": "Tesouro Prefixado com Juros Semestrais",
+   "vencimento": "2027-01-01",
+   "data_base": "2026-11-03",
+   "taxa_compra": 13.54,
+   "taxa_venda": 13.66,
+   "pu_compra": 1027.88,
+   "pu_venda": 1027.18,
+   "pu_base": 1027.18
+  },
+  {
+   "titulo": "Tesouro Prefixado com Juros Semestrais",
+   "vencimento": "2029-01-01",
+   "data_base": "2026-11-03",
+   "taxa_compra": 15.09,
+   "taxa_venda": 15.21,
+   "pu_compra": 949.02,
+   "pu_venda": 946.6,
+   "pu_base": 946.6
+  },
+  {
+   "titulo": "Tesouro Prefixado com Juros Semestrais",
+   "vencimento": "2031-01-01",
+   "data_base": "2026-11-03",
+   "taxa_compra": 15.56,
+   "taxa_venda": 15.68,
+   "pu_compra": 878.51,
+   "pu_venda": 875.0,
+   "pu_base": 875.0
+  },
+  {
+   "titulo": "Tesouro Prefixado com Juros Semestrais",
+   "vencimento": "2033-01-01",
+   "data_base": "2026-11-03",
+   "taxa_compra": 15.66,
+   "taxa_venda": 15.78,
+   "pu_compra": 827.18,
+   "pu_venda": 822.97,
+   "pu_base": 822.97
+  },
+  {
+   "titulo": "Tesouro Prefixado com Juros Semestrais",
+   "vencimento": "2035-01-01",
+   "data_base": "2026-11-03",
+   "taxa_compra": 15.64,
+   "taxa_venda": 15.76,
+   "pu_compra": 792.32,
+   "pu_venda": 787.63,
+   "pu_base": 787.63
+  },
+  {
+   "titulo": "Tesouro Prefixado com Juros Semestrais",
+   "vencimento": "2037-01-01",
+   "data_base": "2026-11-03",
+   "taxa_compra": 15.5,
+   "taxa_venda": 15.62,
+   "pu_compra": 770.66,
+   "pu_venda": 765.64,
+   "pu_base": 765.64
+  },
+  {
+   "titulo": "Tesouro IPCA+",
+   "vencimento": "2029-05-15",
+   "data_base": "2026-11-04",
+   "taxa_compra": 7.83,
+   "taxa_venda": 7.95,
+   "pu_compra": 3954.41,
+   "pu_venda": 3941.99,
+   "pu_base": 3941.99
+  },
+  {
+   "titulo": "Tesouro IPCA+",
+   "vencimento": "2032-08-15",
+   "data_base": "2026-11-04",
+   "taxa_compra": 7.93,
+   "taxa_venda": 8.05,
+   "pu_compra": 3079.61,
+   "pu_venda": 3058.88,
+   "pu_base": 3058.88
+  },
+  {
+   "titulo": "Tesouro IPCA+",
+   "vencimento": "2035-05-15",
+   "data_base": "2026-11-04",
+   "taxa_compra": 7.94,
+   "taxa_venda": 8.06,
+   "pu_compra": 2499.97,
+   "pu_venda": 2475.64,
+   "pu_base": 2475.64
+  },
+  {
+   "titulo": "Tesouro IPCA+",
+   "vencimento": "2040-08-15",
+   "data_base": "2026-11-04",
+   "taxa_compra": 7.61,
+   "taxa_venda": 7.73,
+   "pu_compra": 1747.71,
+   "pu_venda": 1720.61,
+   "pu_base": 1720.61
+  },
+  {
+   "titulo": "Tesouro IPCA+",
+   "vencimento": "2045-05-15",
+   "data_base": "2026-11-04",
+   "taxa_compra": 7.4,
+   "taxa_venda": 7.52,
+   "pu_compra": 1282.48,
+   "pu_venda": 1255.94,
+   "pu_base": 1255.94
+  },
+  {
+   "titulo": "Tesouro IPCA+",
+   "vencimento": "2050-08-15",
+   "data_base": "2026-11-04",
+   "taxa_compra": 7.4,
+   "taxa_venda": 7.52,
+   "pu_compra": 883.61,
+   "pu_venda": 860.3,
+   "pu_base": 860.3
+  },
+  {
+   "titulo": "Tesouro IPCA+ com Juros Semestrais",
+   "vencimento": "2030-08-15",
+   "data_base": "2026-11-04",
+   "taxa_compra": 7.88,
+   "taxa_venda": 8.0,
+   "pu_compra": 4566.52,
+   "pu_venda": 4547.83,
+   "pu_base": 4547.83
+  },
+  {
+   "titulo": "Tesouro IPCA+ com Juros Semestrais",
+   "vencimento": "2032-08-15",
+   "data_base": "2026-11-04",
+   "taxa_compra": 7.9,
+   "taxa_venda": 8.02,
+   "pu_compra": 4443.58,
+   "pu_venda": 4418.11,
+   "pu_base": 4418.11
+  },
+  {
+   "titulo": "Tesouro IPCA+ com Juros Semestrais",
+   "vencimento": "2035-05-15",
+   "data_base": "2026-11-04",
+   "taxa_compra": 7.91,
+   "taxa_venda": 8.03,
+   "pu_compra": 4379.95,
+   "pu_venda": 4347.09,
+   "pu_base": 4347.09
+  },
+  {
+   "titulo": "Tesouro IPCA+ com Juros Semestrais",
+   "vencimento": "2037-05-15",
+   "data_base": "2026-11-04",
+   "taxa_compra": 7.82,
+   "taxa_venda": 7.94,
+   "pu_compra": 4324.63,
+   "pu_venda": 4287.19,
+   "pu_base": 4287.19
+  },
+  {
+   "titulo": "Tesouro IPCA+ com Juros Semestrais",
+   "vencimento": "2040-08-15",
+   "data_base": "2026-11-04",
+   "taxa_compra": 7.68,
+   "taxa_venda": 7.8,
+   "pu_compra": 4194.52,
+   "pu_venda": 4150.91,
+   "pu_base": 4150.91
+  },
+  {
+   "titulo": "Tesouro IPCA+ com Juros Semestrais",
+   "vencimento": "2045-05-15",
+   "data_base": "2026-11-04",
+   "taxa_compra": 7.54,
+   "taxa_venda": 7.66,
+   "pu_compra": 4216.53,
+   "pu_venda": 4166.18,
+   "pu_base": 4166.18
+  },
+  {
+   "titulo": "Tesouro IPCA+ com Juros Semestrais",
+   "vencimento": "2050-08-15",
+   "data_base": "2026-11-04",
+   "taxa_compra": 7.53,
+   "taxa_venda": 7.65,
+   "pu_compra": 4071.59,
+   "pu_venda": 4016.97,
+   "pu_base": 4016.97
+  },
+  {
+   "titulo": "Tesouro IPCA+ com Juros Semestrais",
+   "vencimento": "2055-05-15",
+   "data_base": "2026-11-04",
+   "taxa_compra": 7.51,
+   "taxa_venda": 7.63,
+   "pu_compra": 4104.23,
+   "pu_venda": 4047.0,
+   "pu_base": 4047.0
+  },
+  {
+   "titulo": "Tesouro IPCA+ com Juros Semestrais",
+   "vencimento": "2060-08-15",
+   "data_base": "2026-11-04",
+   "taxa_compra": 7.49,
+   "taxa_venda": 7.61,
+   "pu_compra": 4004.55,
+   "pu_venda": 3945.46,
+   "pu_base": 3945.46
+  },
+  {
+   "titulo": "Tesouro Prefixado",
+   "vencimento": "2027-01-01",
+   "data_base": "2026-11-04",
+   "taxa_compra": 13.5,
+   "taxa_venda": 13.62,
+   "pu_compra": 980.59,
+   "pu_venda": 979.93,
+   "pu_base": 979.93
+  },
+  {
+   "titulo": "Tesouro Prefixado",
+   "vencimento": "2028-01-01",
+   "data_base": "2026-11-04",
+   "taxa_compra": 14.53,
+   "taxa_venda": 14.65,
+   "pu_compra": 855.45,
+   "pu_venda": 853.95,
+   "pu_base": 853.95
+  },
+  {
+   "titulo": "Tesouro Prefixado",
+   "vencimento": "2029-01-01",
+   "data_base": "2026-11-04",
+   "taxa_compra": 15.13,
+   "taxa_venda": 15.25,
+   "pu_compra": 740.23,
+   "pu_venda": 738.17,
+   "pu_base": 738.17
+  },
+  {
+   "titulo": "Tesouro Prefixado",
+   "vencimento": "2031-01-01",
+   "data_base": "2026-11-04",
+   "taxa_compra": 15.48,
+   "taxa_venda": 15.6,
+   "pu_compra": 552.43,
+   "pu_venda": 549.76,
+   "pu_base": 549.76
+  },
+  {
+   "titulo": "Tesouro Prefixado",
+   "vencimento": "2032-01-01",
+   "data_base": "2026-11-04",
+   "taxa_compra": 15.54,
+   "taxa_venda": 15.66,
+   "pu_compra": 477.11,
+   "pu_venda": 474.3,
+   "pu_base": 474.3
+  },
+  {
+   "titulo": "Tesouro Prefixado com Juros Semestrais",
+   "vencimento": "2027-01-01",
+   "data_base": "2026-11-04",
+   "taxa_compra": 13.54,
+   "taxa_venda": 13.66,
+   "pu_compra": 1028.39,
+   "pu_venda": 1027.7,
+   "pu_base": 1027.7
+  },
+  {
+   "titulo": "Tesouro Prefixado com Juros Semestrais",
+   "vencimento": "2029-01-01",
+   "data_base": "2026-11-04",
+   "taxa_compra": 15.03,
+   "taxa_venda": 15.15,
+   "pu_compra": 950.49,
+   "pu_venda": 948.08,
+   "pu_base": 948.08
+  },
+  {
+   "titulo": "Tesouro Prefixado com Juros Semestrais",
+   "vencimento": "2031-01-01",
+   "data_base": "2026-11-04",
+   "taxa_compra": 15.47,
+   "taxa_venda": 15.59,
+   "pu_compra": 881.27,
+   "pu_venda": 877.75,
+   "pu_base": 877.75
+  },
+  {
+   "titulo": "Tesouro Prefixado com Juros Semestrais",
+   "vencimento": "2033-01-01",
+   "data_base": "2026-11-04",
+   "taxa_compra": 15.58,
+   "taxa_venda": 15.7,
+   "pu_compra": 830.16,
+   "pu_venda": 825.93,
+   "pu_base": 825.93
+  },
+  {
+   "titulo": "Tesouro Prefixado com Juros Semestrais",
+   "vencimento": "2035-01-01",
+   "data_base": "2026-11-04",
+   "taxa_compra": 15.55,
+   "taxa_venda": 15.67,
+   "pu_compra": 795.96,
+   "pu_venda": 791.26,
+   "pu_base": 791.26
+  },
+  {
+   "titulo": "Tesouro Prefixado com Juros Semestrais",
+   "vencimento": "2037-01-01",
+   "data_base": "2026-11-04",
+   "taxa_compra": 15.42,
+   "taxa_venda": 15.54,
+   "pu_compra": 774.18,
+   "pu_venda": 769.13,
+   "pu_base": 769.13
+  },
+  {
+   "titulo": "Tesouro IPCA+",
+   "vencimento": "2029-05-15",
+   "data_base": "2026-11-05",
+   "taxa_compra": 7.76,
+   "taxa_venda": 7.88,
+   "pu_compra": 3962.27,
+   "pu_venda": 3949.84,
+   "pu_base": 3949.84
+  },
+  {
+   "titulo": "Tesouro IPCA+",
+   "vencimento": "2032-08-15",
+   "data_base": "2026-11-05",
+   "taxa_compra": 7.92,
+   "taxa_venda": 8.04,
+   "pu_compra": 3082.39,
+   "pu_venda": 3061.65,
+   "pu_base": 3061.65
+  },
+  {
+   "titulo": "Tesouro IPCA+",
+   "vencimento": "2035-05-15",
+   "data_base": "2026-11-05",
+   "taxa_compra": 7.94,
+   "taxa_venda": 8.06,
+   "pu_compra": 2500.9,
+   "pu_venda": 2476.57,
+   "pu_base": 2476.57
+  },
+  {
+   "titulo": "Tesouro IPCA+",
+   "vencimento": "2040-08-15",
+   "data_base": "2026-11-05",
+   "taxa_compra": 7.62,
+   "taxa_venda": 7.74,
+   "pu_compra": 1746.11,
+   "pu_venda": 1719.04,
+   "pu_base": 1719.04
+  },
+  {
+   "titulo": "Tesouro IPCA+",
+   "vencimento": "2045-05-15",
+   "data_base": "2026-11-05",
+   "taxa_compra": 7.48,
+   "taxa_venda": 7.6,
+   "pu_compra": 1265.47,
+   "pu_venda": 1239.3,
+   "pu_base": 1239.3
+  },
+  {
+   "titulo": "Tesouro IPCA+",
+   "vencimento": "2050-08-15",
+   "data_base": "2026-11-05",
+   "taxa_compra": 7.48,
+   "taxa_venda": 7.6,
+   "pu_compra": 868.51,
+   "pu_venda": 845.61,
+   "pu_base": 845.61
+  },
+  {
+   "titulo": "Tesouro IPCA+ com Juros Semestrais",
+   "vencimento": "2030-08-15",
+   "data_base": "2026-11-05",
+   "taxa_compra": 7.84,
+   "taxa_venda": 7.96,
+   "pu_compra": 4573.88,
+   "pu_venda": 4555.18,
+   "pu_base": 4555.18
+  },
+  {
+   "titulo": "Tesouro IPCA+ com Juros Semestrais",
+   "vencimento": "2032-08-15",
+   "data_base": "2026-11-05",
+   "taxa_compra": 7.89,
+   "taxa_venda": 8.01,
+   "pu_compra": 4447.21,
+   "pu_venda": 4421.74,
+   "pu_base": 4421.74
+  },
+  {
+   "titulo": "Tesouro IPCA+ com Juros Semestrais",
+   "vencimento": "2035-05-15",
+   "data_base": "2026-11-05",
+   "taxa_compra": 7.91,
+   "taxa_venda": 8.03,
+   "pu_compra": 4381.57,
+   "pu_venda": 4348.72,
+   "pu_base": 4348.72
+  },
+  {
+   "titulo": "Tesouro IPCA+ com Juros Semestrais",
+   "vencimento": "2037-05-15",
+   "data_base": "2026-11-05",
+   "taxa_compra": 7.81,
+   "taxa_venda": 7.93,
+   "pu_compra": 4329.22,
+   "pu_venda": 4291.75,
+   "pu_base": 4291.75
+  },
+  {
+   "titulo": "Tesouro IPCA+ com Juros Semestrais",
+   "vencimento": "2040-08-15",
+   "data_base": "2026-11-05",
+   "taxa_compra": 7.68,
+   "taxa_venda": 7.8,
+   "pu_compra": 4196.03,
+   "pu_venda": 4152.43,
+   "pu_base": 4152.43
+  },
+  {
+   "titulo": "Tesouro IPCA+ com Juros Semestrais",
+   "vencimento": "2045-05-15",
+   "data_base": "2026-11-05",
+   "taxa_compra": 7.59,
+   "taxa_venda": 7.71,
+   "pu_compra": 4197.57,
+   "pu_venda": 4147.58,
+   "pu_base": 4147.58
+  },
+  {
+   "titulo": "Tesouro IPCA+ com Juros Semestrais",
+   "vencimento": "2050-08-15",
+   "data_base": "2026-11-05",
+   "taxa_compra": 7.58,
+   "taxa_venda": 7.7,
+   "pu_compra": 4050.75,
+   "pu_venda": 3996.58,
+   "pu_base": 3996.58
+  },
+  {
+   "titulo": "Tesouro IPCA+ com Juros Semestrais",
+   "vencimento": "2055-05-15",
+   "data_base": "2026-11-05",
+   "taxa_compra": 7.56,
+   "taxa_venda": 7.68,
+   "pu_compra": 4082.29,
+   "pu_venda": 4025.6,
+   "pu_base": 4025.6
+  },
+  {
+   "titulo": "Tesouro IPCA+ com Juros Semestrais",
+   "vencimento": "2060-08-15",
+   "data_base": "2026-11-05",
+   "taxa_compra": 7.56,
+   "taxa_venda": 7.68,
+   "pu_compra": 3972.14,
+   "pu_venda": 3913.9,
+   "pu_base": 3913.9
+  },
+  {
+   "titulo": "Tesouro Prefixado",
+   "vencimento": "2027-01-01",
+   "data_base": "2026-11-05",
+   "taxa_compra": 13.58,
+   "taxa_venda": 13.7,
+   "pu_compra": 980.98,
+   "pu_venda": 980.32,
+   "pu_base": 980.32
+  },
+  {
+   "titulo": "Tesouro Prefixado",
+   "vencimento": "2028-01-01",
+   "data_base": "2026-11-05",
+   "taxa_compra": 14.36,
+   "taxa_venda": 14.48,
+   "pu_compra": 857.37,
+   "pu_venda": 855.88,
+   "pu_base": 855.88
+  },
+  {
+   "titulo": "Tesouro Prefixado",
+   "vencimento": "2029-01-01",
+   "data_base": "2026-11-05",
+   "taxa_compra": 14.94,
+   "taxa_venda": 15.06,
+   "pu_compra": 743.25,
+   "pu_venda": 741.19,
+   "pu_base": 741.19
+  },
+  {
+   "titulo": "Tesouro Prefixado",
+   "vencimento": "2031-01-01",
+   "data_base": "2026-11-05",
+   "taxa_compra": 15.27,
+   "taxa_venda": 15.39,
+   "pu_compra": 556.91,
+   "pu_venda": 554.21,
+   "pu_base": 554.21
+  },
+  {
+   "titulo": "Tesouro Prefixado",
+   "vencimento": "2032-01-01",
+   "data_base": "2026-11-05",
+   "taxa_compra": 15.34,
+   "taxa_venda": 15.46,
+   "pu_compra": 481.63,
+   "pu_venda": 478.8,
+   "pu_base": 478.8
+  },
+  {
+   "titulo": "Tesouro Prefixado com Juros Semestrais",
+   "vencimento": "2027-01-01",
+   "data_base": "2026-11-05",
+   "taxa_compra": 13.6,
+   "taxa_venda": 13.72,
+   "pu_compra": 1028.83,
+   "pu_venda": 1028.14,
+   "pu_base": 1028.14
+  },
+  {
+   "titulo": "Tesouro Prefixado com Juros Semestrais",
+   "vencimento": "2029-01-01",
+   "data_base": "2026-11-05",
+   "taxa_compra": 14.85,
+   "taxa_venda": 14.97,
+   "pu_compra": 953.85,
+   "pu_venda": 951.44,
+   "pu_base": 951.44
+  },
+  {
+   "titulo": "Tesouro Prefixado com Juros Semestrais",
+   "vencimento": "2031-01-01",
+   "data_base": "2026-11-05",
+   "taxa_compra": 15.26,
+   "taxa_venda": 15.38,
+   "pu_compra": 887.07,
+   "pu_venda": 883.54,
+   "pu_base": 883.54
+  },
+  {
+   "titulo": "Tesouro Prefixado com Juros Semestrais",
+   "vencimento": "2033-01-01",
+   "data_base": "2026-11-05",
+   "taxa_compra": 15.38,
+   "taxa_venda": 15.5,
+   "pu_compra": 836.95,
+   "pu_venda": 832.68,
+   "pu_base": 832.68
+  },
+  {
+   "titulo": "Tesouro Prefixado com Juros Semestrais",
+   "vencimento": "2035-01-01",
+   "data_base": "2026-11-05",
+   "taxa_compra": 15.35,
+   "taxa_venda": 15.47,
+   "pu_compra": 803.58,
+   "pu_venda": 798.82,
+   "pu_base": 798.82
+  },
+  {
+   "titulo": "Tesouro Prefixado com Juros Semestrais",
+   "vencimento": "2037-01-01",
+   "data_base": "2026-11-05",
+   "taxa_compra": 15.21,
+   "taxa_venda": 15.33,
+   "pu_compra": 782.8,
+   "pu_venda": 777.67,
+   "pu_base": 777.67
+  }
+ ]
+}

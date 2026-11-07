@@ -1,0 +1,16 @@
+# Colunas INTERNAS do Runflow: aparecem só no modo interno e nunca entram em cálculo ou ranking
+# (regras 6 e 7 do CLAUDE.md).
+#
+# Este arquivo de EXEMPLO usa nomes genéricos; é o layout das amostras fictícias em data/samples/.
+# Para os arquivos reais, copie para config/runflow_columns.local.toml (fora do git, ver .gitignore)
+# e troque "cabecalho" pelos nomes exatos das colunas da planilha real.
+#
+# campo = { cabecalho = "nome da coluna no Excel", rotulo = "como aparece na tela" }
+
+[colunas_internas]
+fee     = { cabecalho = "Receita Estimada",          rotulo = "Receita est." }
+melhora = { cabecalho = "Ajuste Máximo",              rotulo = "Ajuste máx." }
+comp_a  = { cabecalho = "Comparativo Plataforma A",  rotulo = "Comp. A" }
+comp_b  = { cabecalho = "Comparativo Plataforma B",  rotulo = "Comp. B" }
+delta_a = { cabecalho = "Diferença A",                rotulo = "Δ A" }
+delta_b = { cabecalho = "Diferença B",                rotulo = "Δ B" }

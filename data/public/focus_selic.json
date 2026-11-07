@@ -1,0 +1,74 @@
+{
+ "fonte": "BCB Focus — Selic por reunião (mediana, % a.a.)",
+ "url": "https://olinda.bcb.gov.br/olinda/servico/Expectativas/versao/v1/odata/ExpectativasMercadoSelic?$top=200&$orderby=Data%20desc&$format=json&$filter=baseCalculo%20eq%200",
+ "coletado_em": "2026-11-07T01:37:09-03:00",
+ "dados": {
+  "data_referencia": "2026-10-30",
+  "reunioes": [
+   {
+    "reuniao": "R7/2026",
+    "mediana": 13.5
+   },
+   {
+    "reuniao": "R8/2026",
+    "mediana": 13.5
+   },
+   {
+    "reuniao": "R1/2027",
+    "mediana": 13.5
+   },
+   {
+    "reuniao": "R2/2027",
+    "mediana": 13.5
+   },
+   {
+    "reuniao": "R3/2027",
+    "mediana": 13.5
+   },
+   {
+    "reuniao": "R4/2027",
+    "mediana": 13.25
+   },
+   {
+    "reuniao": "R5/2027",
+    "mediana": 13.0
+   },
+   {
+    "reuniao": "R6/2027",
+    "mediana": 12.75
+   },
+   {
+    "reuniao": "R7/2027",
+    "mediana": 12.5
+   },
+   {
+    "reuniao": "R8/2027",
+    "mediana": 12.5
+   },
+   {
+    "reuniao": "R1/2028",
+    "mediana": 12.25
+   },
+   {
+    "reuniao": "R2/2028",
+    "mediana": 12.0
+   },
+   {
+    "reuniao": "R3/2028",
+    "mediana": 12.0
+   },
+   {
+    "reuniao": "R4/2028",
+    "mediana": 11.75
+   },
+   {
+    "reuniao": "R5/2028",
+    "mediana": 11.5
+   },
+   {
+    "reuniao": "R6/2028",
+    "mediana": 11.25
+   }
+  ]
+ }
+}

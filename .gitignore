@@ -1,0 +1,27 @@
+# --- Regra 3: nenhum arquivo de dados fora de data/samples/ e data/public/ ---
+*.pdf
+*.xlsx
+*.xls
+*.xlsm
+*.csv
+*.txt
+!data/samples/*
+!data/public/*
+
+# Ambiente e artefatos
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+_site/
+*.egg-info/
+build/
+dist/
+.streamlit/secrets.toml
+.claude/settings.local.json
+
+# Configurações locais (nomes reais de colunas internas, instituições)
+config/*.local.toml

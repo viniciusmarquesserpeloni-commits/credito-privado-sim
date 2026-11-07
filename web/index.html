@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <title>Simulador de Trocas — Crédito Privado</title>
+  <meta name="description" content="Ferramenta analítica que roda inteiramente no navegador. Arquivos enviados não saem da sua máquina." />
+  <link id="stlite-css" rel="stylesheet" />
+  <style>
+    #carregando { font: 15px/1.5 system-ui, sans-serif; color: #444; padding: 2rem; text-align: center; }
+  </style>
+</head>
+<body>
+  <div id="carregando">Carregando o Python no navegador (a primeira vez leva alguns segundos)…<br />
+    Os arquivos que você enviar ficam só nesta aba: nada é gravado nem enviado a servidor.</div>
+  <div id="root"></div>
+  <script type="module">
+    // Versão do stlite fixada (Pyodide e pacotes vêm junto com ela).
+    // Para comparar outra versão sem editar: ?stlite=1.11.0
+    const STLITE_PADRAO = "1.12.0";
+    const params = new URLSearchParams(location.search);
+    const pedida = params.get("stlite") || "";
+    const versao = /^\d+\.\d+\.\d+$/.test(pedida) ? pedida : STLITE_PADRAO;
+    const base = `https://cdn.jsdelivr.net/npm/@stlite/browser@${versao}/build/`;
+    document.getElementById("stlite-css").href = base + "stlite.css";
+
+    const t0 = performance.now();
+    const manifest = await (await fetch("manifest.json", { cache: "no-cache" })).json();
+    const files = {};
+    for (const p of manifest.files) files[p] = { url: new URL(p, location.href).href };
+    const requirements = [...manifest.requirements];
+
+    const { mount } = await import(base + "stlite.js");
+    document.getElementById("carregando").remove();
+    mount(
+      {
+        requirements,
+        entrypoint: manifest.entrypoint,
+        files,
+        // Regra 8: telemetria desligada.
+        streamlitConfig: {
+          "browser.gatherUsageStats": false,
+          "client.toolbarMode": "viewer",
+          "server.maxUploadSize": 50,
+        },
+      },
+      document.getElementById("root"),
+    );
+
+    // Mede o tempo até o app desenhar a primeira tela (aparece no console e em window.__cpsimLoad).
+    const marcador = manifest.readyMarker;
+    const obs = new MutationObserver(() => {
+      if (document.body.innerText.includes(marcador)) {
+        obs.disconnect();
+        const ms = Math.round(performance.now() - t0);
+        window.__cpsimLoad = { stlite: versao, ms, requirements };
+        console.info(`[cpsim] app pronto em ${(ms / 1000).toFixed(1)} s (stlite ${versao})`);
+      }
+    });
+    obs.observe(document.body, { childList: true, subtree: true, characterData: true });
+  </script>
+</body>
+</html>

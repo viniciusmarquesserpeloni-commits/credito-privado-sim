@@ -61,6 +61,9 @@ def main() -> None:
             shutil.copy2(p, dest)
             files.append(rel)
     shutil.copy2(ROOT / "web" / "index.html", SITE / "index.html")
+    # GitHub Pages serve 404.html para caminhos desconhecidos: recarregar em /trocas, /carteira…
+    # abre o próprio app (que lê o caminho e mostra a tela certa) em vez do erro do GitHub.
+    shutil.copy2(ROOT / "web" / "index.html", SITE / "404.html")
     (SITE / ".nojekyll").touch()
     manifest = {
         "entrypoint": ENTRYPOINT,

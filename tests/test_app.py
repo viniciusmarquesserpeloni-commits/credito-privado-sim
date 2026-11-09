@@ -39,7 +39,7 @@ def all_text(at: AppTest) -> str:
 
 def test_navegacao_sobe_na_tela_dados():
     at = run()
-    assert any("1 · Dados" in t.value for t in at.title)
+    assert any(t.value == "Dados" for t in at.title)
 
 
 @pytest.mark.parametrize("page", PAGES)

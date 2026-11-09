@@ -12,7 +12,7 @@ import streamlit as st  # noqa: E402
 import ui  # noqa: E402
 from cpsim import report  # noqa: E402
 
-st.title("5 · Metodologia")
+st.title("Metodologia e fontes")
 st.warning(report.AVISO)
 
 st.markdown(ui.L("""

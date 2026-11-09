@@ -22,6 +22,7 @@ from dataclasses import dataclass, field
 from .calendar import business_days
 from .enrich import EnrichedPosition, issuer_key
 from .models import Candidate, Indexer, Rate
+from .normalize import fmt_num, fmt_pct, fmt_signed
 from .rates import nominal_expected, rate_difference
 from .scenarios import Scenario
 from .spreads import (DEFAULT_BID_ASK_BY_LIQUIDITY, NtnbQuote, exit_cost, ntnb_reference,
@@ -191,7 +192,7 @@ def evaluate_pair(h: EnrichedPosition, c: Candidate, ctx: _Context) -> PairResul
     lastro_ok = c.active and c.lastro is not None and c.lastro >= V
     checks.append(Check("distribuição e lastro", lastro_ok,
                         f"distribuição {c.distribution or '—'}; lastro "
-                        f"{'—' if c.lastro is None else f'{c.lastro:,.0f}'} vs saída {V:,.0f}"))
+                        f"{'—' if c.lastro is None else fmt_num(c.lastro, 0)} vs saída {fmt_num(V, 0)}"))
     perfil_ok = not (c.qualified_only and not p.qualified_investor)
     checks.append(Check("perfil do investidor", perfil_ok,
                         "exige investidor qualificado" if c.qualified_only else "público geral"))
@@ -211,8 +212,8 @@ def evaluate_pair(h: EnrichedPosition, c: Candidate, ctx: _Context) -> PairResul
     else:
         dd = c.duration - h.duration.value
         checks.append(Check("duration", abs(dd) <= p.duration_band,
-                             f"{h.duration.value:.2f} → {c.duration:.2f} anos (Δ {dd:+.2f}; "
-                             f"banda ±{p.duration_band:.1f})"))
+                             f"{fmt_num(h.duration.value)} → {fmt_num(c.duration)} anos "
+                             f"(Δ {fmt_signed(dd)}; banda ±{fmt_num(p.duration_band, 1)})"))
     if h.rating.has_rating and c.rating.has_rating:
         ok = c.rating.notch >= h.rating.notch - p.rating_tolerance
         checks.append(Check("rating", ok, f"{h.rating.label} → {c.rating.label}"))
@@ -229,10 +230,11 @@ def evaluate_pair(h: EnrichedPosition, c: Candidate, ctx: _Context) -> PairResul
     exp_s = ctx.by_sector.get(sk, 0.0) + V - (V if sk == (h.sector or "").strip().lower() else 0.0)
     if tot > 0:
         checks.append(Check("concentração por emissor", exp_i / tot <= p.issuer_limit,
-                             f"{exp_i / tot:.1%} do total analisado (limite {p.issuer_limit:.0%})"))
+                             f"{fmt_pct(exp_i / tot, 1)} do total analisado (limite "
+                             f"{fmt_pct(p.issuer_limit, 0)})"))
         if sk:
             checks.append(Check("concentração por setor", exp_s / tot <= p.sector_limit,
-                                 f"{exp_s / tot:.1%} (limite {p.sector_limit:.0%})"))
+                                 f"{fmt_pct(exp_s / tot, 1)} (limite {fmt_pct(p.sector_limit, 0)})"))
 
     res = PairResult(h, c, checks, alerts=alerts)
     if h.rate is None or c.rate is None:
@@ -252,7 +254,7 @@ def evaluate_pair(h: EnrichedPosition, c: Candidate, ctx: _Context) -> PairResul
     else:
         res.delta_rate = res.delta_nominal
         alerts.append(f"indexadores diferentes: comparação pela taxa nominal esperada no cenário "
-                      f"'{sc.name}' (CDI {sc.cdi:.2%}, IPCA {sc.ipca:.2%})")
+                      f"'{sc.name}' (CDI {fmt_pct(sc.cdi)}, IPCA {fmt_pct(sc.ipca)})")
     res.delta_spread = _delta_ntnb_spread(h, c, ctx.ntnb, ctx.as_of) if same_idx else None
     if res.delta_spread is not None:
         res.delta_metric, res.delta_metric_name = res.delta_spread, "Δ spread s/ NTN-B"

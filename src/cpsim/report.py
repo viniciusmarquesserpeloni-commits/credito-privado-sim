@@ -14,7 +14,7 @@ from typing import Any
 
 from .enrich import EnrichedPosition
 from .models import Mode
-from .normalize import fmt_bps, fmt_brl, fmt_pct
+from .normalize import fmt_bps, fmt_brl, fmt_num, fmt_pct
 from .swap_engine import PairResult, SwapReport
 
 AVISO = ("Ferramenta analítica: não constitui recomendação de investimento. Os limiares de "
@@ -90,7 +90,7 @@ def justification(pr: PairResult, mode: Mode) -> str:
     if pr.delta_metric is not None:
         parts.append(f"{pr.delta_metric_name}: {fmt_bps(pr.delta_metric, 1)}")
     if pr.payback_b is not None:
-        parts.append(f"equilíbrio A {pr.payback_a:.2f} / B {pr.payback_b:.2f} anos")
+        parts.append(f"equilíbrio A {fmt_num(pr.payback_a)} / B {fmt_num(pr.payback_b)} anos")
     parts += pr.alerts
     return sanitize(" | ".join(parts), mode)
 
@@ -134,15 +134,16 @@ def summary_table(report: SwapReport) -> list[dict[str, Any]]:
     b, a = report.before, report.after
 
     def top(d: dict[str, float]) -> str:
-        return ", ".join(f"{k} {v:.0%}" for k, v in sorted(d.items(), key=lambda x: -x[1])[:3])
+        return ", ".join(f"{k} {fmt_pct(v, 0)}"
+                         for k, v in sorted(d.items(), key=lambda x: -x[1])[:3])
 
     return [
         {"Item": "Valor analisado", "Antes": fmt_brl(b.total), "Depois": fmt_brl(a.total)},
         {"Item": "Taxa nominal esperada média", "Antes": fmt_pct(b.avg_nominal_rate),
          "Depois": fmt_pct(a.avg_nominal_rate)},
         {"Item": "Duration média (anos)",
-         "Antes": f"{b.avg_duration:.2f}" if b.avg_duration is not None else "—",
-         "Depois": f"{a.avg_duration:.2f}" if a.avg_duration is not None else "—"},
+         "Antes": fmt_num(b.avg_duration) if b.avg_duration is not None else "—",
+         "Depois": fmt_num(a.avg_duration) if a.avg_duration is not None else "—"},
         {"Item": "Maiores emissores", "Antes": top(b.by_issuer), "Depois": top(a.by_issuer)},
         {"Item": "Maiores setores", "Antes": top(b.by_sector), "Depois": top(a.by_sector)},
         {"Item": "Trocas recomendadas aplicadas", "Antes": "", "Depois": str(len(report.applied))},

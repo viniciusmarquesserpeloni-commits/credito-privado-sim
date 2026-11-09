@@ -15,7 +15,7 @@ from cpsim import report  # noqa: E402
 from cpsim.normalize import fmt_brl  # noqa: E402
 from cpsim.swap_engine import FORA, MANTER, MARGINAL, RECOMENDADA, SEM_TAXA  # noqa: E402
 
-st.title("4 · Trocas")
+st.title("Trocas")
 if ui.need_data():
     st.stop()
 rep, en, rf = ui.swap_report(), ui.enriched(), ui.runflow()

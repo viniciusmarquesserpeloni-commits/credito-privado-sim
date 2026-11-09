@@ -12,18 +12,21 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 import streamlit as st  # noqa: E402
 
+import theme  # noqa: E402
 import ui  # noqa: E402
 
 st.set_page_config(page_title="Simulador de trocas — crédito privado", page_icon="📊",
-                   layout="wide")
+                   layout="wide", initial_sidebar_state="collapsed")
+theme.apply()
 
 paginas = [
-    st.Page("pages/1_dados.py", title="1 · Dados", icon="📂", default=True),
-    st.Page("pages/2_parametros.py", title="2 · Parâmetros", icon="⚙️"),
-    st.Page("pages/3_carteira.py", title="3 · Carteira", icon="💼"),
-    st.Page("pages/4_trocas.py", title="4 · Trocas", icon="🔁"),
-    st.Page("pages/5_metodologia.py", title="5 · Metodologia", icon="📘"),
+    st.Page("pages/1_dados.py", title="Dados", default=True),
+    st.Page("pages/2_parametros.py", title="Parâmetros"),
+    st.Page("pages/3_carteira.py", title="Carteira"),
+    st.Page("pages/4_trocas.py", title="Trocas"),
+    st.Page("pages/5_metodologia.py", title="Metodologia e fontes"),
 ]
-nav = st.navigation(paginas)
-ui.sidebar()
+nav = st.navigation(paginas, position="top")
+ui.header()
 nav.run()
+ui.footer()

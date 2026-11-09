@@ -12,7 +12,7 @@ import streamlit as st  # noqa: E402
 import ui  # noqa: E402
 from cpsim.normalize import fmt_pct  # noqa: E402
 
-st.title("2 · Parâmetros")
+st.title("Parâmetros")
 st.caption("Limiares e custos são hipóteses ainda não validadas por backtest.")
 
 

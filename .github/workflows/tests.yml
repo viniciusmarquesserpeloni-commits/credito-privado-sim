@@ -32,3 +32,34 @@ jobs:
 
       - name: Testes e cobertura do núcleo
         run: pytest --cov=cpsim --cov-report=term-missing
+
+  # HTML offline: o motor JavaScript precisa dar os mesmos resultados que o Python (referência).
+  offline-js:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+
+      - name: Instalar dependências
+        run: |
+          pip install -e ".[dev]"
+          cd offline && npm ci
+
+      - name: Referência do Python em dia com o código
+        run: |
+          python scripts/make_js_fixtures.py
+          git diff --exit-code offline/tests/fixtures.json
+
+      - name: Motor JS × Python
+        run: cd offline && npm test
+
+      - name: Montar o HTML único
+        run: python scripts/build_offline.py

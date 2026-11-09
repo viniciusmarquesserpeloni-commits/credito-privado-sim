@@ -17,7 +17,7 @@ from cpsim.enrich import Override  # noqa: E402
 from cpsim.normalize import fmt_brl  # noqa: E402
 
 ss = st.session_state
-st.title("3 · Carteira")
+st.title("Carteira")
 
 m = ui.mapa()
 if m is None:

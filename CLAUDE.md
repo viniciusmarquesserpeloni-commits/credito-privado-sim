@@ -64,6 +64,14 @@ colunas internas também vêm do config local).
 `cpsim.report` no modo ativo; textos fixos que citam o Runflow passam por `ui.L()`. Testes do app
 em `tests/test_app.py` (AppTest), incluindo o modo cliente.
 
+## Versão offline (HTML único, 09/11/2026)
+`offline/src/*.mjs` é o porte em JavaScript do núcleo (motor, leitores com pdf.js e xlsx próprio,
+interface com o visual do painel "Relatório de Fundos"). **O Python é a referência:** qualquer
+mudança de fórmula, leitor ou texto de saída vai para os dois lados; depois rodar
+`python scripts/make_js_fixtures.py` e `cd offline && npm test` (o CI confere). Montagem:
+`python scripts/build_offline.py` → `dist/simulador_credito_privado.html` (o site publica o mesmo
+arquivo). Nunca embutir `*.local.toml` nem arquivo real. Detalhes: `docs/HTML_OFFLINE.md`.
+
 ## Stack
 - Python ≥ 3.12 (CI testa 3.12 e 3.13). Núcleo em `src/cpsim` com funções puras, sem Streamlit,
   tipado (dataclasses), testado com pytest.

@@ -15,7 +15,7 @@ import ui  # noqa: E402
 from cpsim.curves import MAX_IDADE_DIAS_UTEIS, freshness, oldest_collection  # noqa: E402
 
 ss = st.session_state
-st.title("1 · Dados")
+st.title("Dados")
 st.caption("Os arquivos ficam só na memória desta aba: nada é gravado, enviado a servidor ou "
            "registrado. Ao fechar a aba, tudo some.")
 

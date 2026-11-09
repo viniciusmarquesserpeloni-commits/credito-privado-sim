@@ -8,3 +8,11 @@ maxUploadSize = 50
 
 [client]
 toolbarMode = "viewer"
+
+[theme]
+# Cores do painel "Relatório de Fundos" (petróleo + verde-lima).
+base = "light"
+primaryColor = "#0e2a33"
+backgroundColor = "#f4f5f2"
+secondaryBackgroundColor = "#ffffff"
+textColor = "#0e2a33"

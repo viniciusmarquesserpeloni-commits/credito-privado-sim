@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Simulador de trocas — crédito privado</title>
+  <meta name="description" content="Simulador de trocas em crédito privado. Funciona offline: os arquivos são lidos só neste navegador.">
+  <style>/*__CSS__*/</style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <div>
+          <h1>Crédito Privado</h1>
+          <p>Simulador de trocas de títulos</p>
+        </div>
+      </div>
+      <div class="topbar-meta">
+        <span class="pill" id="pill-pos"><span class="dot"></span>Posição <b>—</b></span>
+        <span class="pill" id="pill-dados"><span class="dot"></span>Dados públicos <b>—</b></span>
+        <span class="mode-switch no-print" role="group" aria-label="Modo de saída">
+          <button type="button" data-action="modo" data-value="interno" aria-pressed="true">Interno</button>
+          <button type="button" data-action="modo" data-value="cliente" aria-pressed="false">Cliente</button>
+        </span>
+        <button class="icon-btn no-print" type="button" data-action="print" title="Imprimir ou salvar em PDF">Imprimir / PDF</button>
+      </div>
+    </div>
+    <nav class="tabs" aria-label="Seções">
+      <a class="tab" href="#/dados" data-route="dados">Dados</a>
+      <a class="tab" href="#/parametros" data-route="parametros">Parâmetros</a>
+      <a class="tab" href="#/carteira" data-route="carteira">Carteira</a>
+      <a class="tab" href="#/trocas" data-route="trocas">Trocas <span class="count hidden" id="tab-count">0</span></a>
+      <a class="tab" href="#/metodologia" data-route="metodologia">Metodologia e fontes</a>
+    </nav>
+  </header>
+
+  <main id="view" tabindex="-1"><div class="empty"><h3>Carregando…</h3><p>Se esta mensagem não sumir, abra o arquivo no Edge ou no Chrome.</p></div></main>
+  <footer id="footer"></footer>
+  <noscript><div class="warn-note" style="max-width:900px;margin:24px auto">Este simulador precisa de JavaScript habilitado.</div></noscript>
+
+  <script type="application/json" id="cpsim-data">/*__DATA__*/</script>
+  <script type="text/plain" id="pdfjs-lib">/*__PDFJS_LIB__*/</script>
+  <script type="text/plain" id="pdfjs-worker">/*__PDFJS_WORKER__*/</script>
+  <!--__MODULES__-->
+  <script type="module">
+    // Carrega os módulos embutidos como blobs (funciona aberto direto do disco, sem servidor).
+    const src = {};
+    for (const el of document.querySelectorAll("script[data-mod]")) src[el.dataset.mod] = el.textContent;
+    const urls = {};
+    const load = (name) => {
+      if (!urls[name]) {
+        const code = src[name].replace(/from\s+"\.\/([\w.]+)"/g, (_, dep) => `from "${load(dep)}"`);
+        urls[name] = URL.createObjectURL(new Blob([code], { type: "text/javascript" }));
+      }
+      return urls[name];
+    };
+    import(load("ui.mjs")).catch((e) => {
+      document.getElementById("view").innerHTML = '<div class="warn-note">Não foi possível iniciar o simulador neste navegador: ' + String(e) + '. Use o Edge ou o Chrome atualizados.</div>';
+    });
+  </script>
+</body>
+</html>

@@ -25,3 +25,4 @@ dist/
 
 # Configurações locais (nomes reais de colunas internas, instituições)
 config/*.local.toml
+node_modules/

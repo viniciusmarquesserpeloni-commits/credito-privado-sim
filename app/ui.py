@@ -26,7 +26,8 @@ import streamlit as st  # noqa: E402
 
 from cpsim import report  # noqa: E402
 from cpsim.config import EXAMPLE, load_internal_columns, parse_internal_columns  # noqa: E402
-from cpsim.curves import PublicData, load_public, ntnb_quotes  # noqa: E402
+from cpsim.curves import (PublicData, freshness, load_public, ntnb_quotes,  # noqa: E402
+                          oldest_collection)
 from cpsim.enrich import EnrichedPosition, Override, enrich  # noqa: E402
 from cpsim.models import Indexer, MapaPositions, RunflowData  # noqa: E402
 from cpsim.normalize import fmt_brl, fmt_pct  # noqa: E402
@@ -249,14 +250,30 @@ def swap_report() -> SwapReport | None:
 
 
 # ----------------------------------------------------------------------------- exibição
-def sidebar() -> None:
-    with st.sidebar:
-        st.markdown(f"### {APP_TITLE}")
-        st.caption(f"Modo de saída: **{mode()}**"
-                   + (" — inclui colunas internas" if interno() else " — pronto para o cliente"))
-        if use_samples():
-            st.caption("Usando arquivos de **amostra fictícia**.")
-        st.caption(report.AVISO)
+OFFLINE_URL = ("https://viniciusmarquesserpeloni-commits.github.io/credito-privado-sim/"
+               "simulador_credito_privado.html")
+
+
+def header() -> None:
+    """Faixa de marca no topo (visual do painel), com posição, dados públicos e modo."""
+    from theme import topbar
+
+    m = mapa()
+    col = oldest_collection(public())
+    stale = any(f.stale for f in freshness(public(), dt.date.today()))
+    pills = [("Posição", m.position_date.strftime("%d/%m/%Y") if m and m.position_date else "—", ""),
+             ("Dados públicos", col.strftime("%d/%m/%Y") if col else "—", "stale" if stale else ""),
+             (f"Modo {mode()}", "", "lime")]
+    if use_samples():
+        pills.insert(2, ("Amostra fictícia", "", ""))
+    topbar(pills)
+
+
+def footer() -> None:
+    st.divider()
+    st.caption(f"{report.AVISO} Fontes públicas: BCB SGS (CDI, Selic, IPCA), BCB Focus e Tesouro "
+               f"Transparente. Arquivos do usuário ficam só na memória desta aba. "
+               f"[Versão offline (um único HTML, abre sem internet)]({OFFLINE_URL})")
 
 
 def need_data() -> bool:
@@ -264,7 +281,7 @@ def need_data() -> bool:
     pdf, xlsx, _ = files()
     if pdf and xlsx:
         return False
-    st.info(L("Carregue o Mapa de Posições e o Runflow na tela **Dados** (ou use as amostras)."))
+    st.info(L("Carregue o Mapa de Posições e o Runflow na aba **Dados** (ou use as amostras)."))
     return True
 
 

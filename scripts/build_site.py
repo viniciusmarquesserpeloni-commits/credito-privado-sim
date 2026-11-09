@@ -65,6 +65,11 @@ def main() -> None:
     # abre o próprio app (que lê o caminho e mostra a tela certa) em vez do erro do GitHub.
     shutil.copy2(ROOT / "web" / "index.html", SITE / "404.html")
     (SITE / ".nojekyll").touch()
+    # Versão offline (um único HTML), gerada com os mesmos dados públicos deste build.
+    sys.path.insert(0, str(ROOT / "scripts"))
+    from build_offline import build as build_offline
+
+    build_offline(SITE / "simulador_credito_privado.html")
     manifest = {
         "entrypoint": ENTRYPOINT,
         "requirements": STLITE_REQUIREMENTS,

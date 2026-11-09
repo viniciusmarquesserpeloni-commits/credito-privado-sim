@@ -126,6 +126,16 @@ def fmt_bps(x: float | None, casas: int = 0) -> str:
     return f"{x * 10_000:,.{casas}f} bps".replace(",", "X").replace(".", ",").replace("X", ".")
 
 
+def fmt_num(x: float, casas: int = 2) -> str:
+    """1234.5 -> '1.234,50' (padrão brasileiro)."""
+    return f"{x:,.{casas}f}".replace(",", "X").replace(".", ",").replace("X", ".")
+
+
+def fmt_signed(x: float, casas: int = 2) -> str:
+    """0.2 -> '+0,20'; -0.2 -> '-0,20'."""
+    return ("+" if x >= 0 else "") + fmt_num(x, casas)
+
+
 def fmt_brl(x: float | None) -> str:
     if x is None:
         return "—"

@@ -24,6 +24,13 @@ e custos.
 
 **MVP (Fases 0 a 3)** concluído — relatórios em [`docs/`](docs/) (`FASE0_` a `FASE3_RELATORIO.md`).
 
+## Versão offline (um único HTML)
+
+Se o site estiver bloqueado, use o arquivo **`simulador_credito_privado.html`**: abre com duplo
+clique no Edge ou no Chrome, sem internet e sem servidor, e faz exatamente o mesmo que o site.
+Baixe pelo link no rodapé do site, ou gere com `python scripts/build_offline.py` (sai em `dist/`).
+Detalhes em [`docs/HTML_OFFLINE.md`](docs/HTML_OFFLINE.md).
+
 ## Como usar
 
 1. **Dados:** envie o Mapa de Posições (PDF) e o Runflow (XLSX), ou use as amostras fictícias.
